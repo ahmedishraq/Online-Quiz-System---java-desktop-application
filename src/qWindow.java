@@ -577,11 +577,8 @@ public class qWindow extends javax.swing.JFrame {
                           }
                           if(minute == 0 && second == 0){
                               state = false;
-                              //new Login().setVisible(true);
-//                              calculateScore();
                              JOptionPane.showMessageDialog(null,"Times up for your exam");
                               setVisible(false);
-//                              JOptionPane.showMessageDialog(null,"Correct Answer: "+wright+"\n Wrong Answer: "+wrong);
                           }
                       }
                       catch(Exception e){
