@@ -255,8 +255,6 @@ public class signup extends javax.swing.JFrame {
                 String q = "insert into student_info values('" +name+ "','" +student_id+ "','" +institution+ "','" +username+ "','"
                         +password+ "','" +email+ "','" +date+ "','" +month+ "','" +year+ "','" +gender+ "')";
                 c1.s.executeUpdate(q);
-                /*String q1 = "insert into question_answer (student_id) values('" +student_id+"')";
-                c1.s.executeQuery(q1);*/
                JOptionPane.showMessageDialog(null,"Registered Successfully!");
                setVisible(false);
                new Login().setVisible(true);

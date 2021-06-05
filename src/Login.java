@@ -138,14 +138,6 @@ public class Login extends javax.swing.JFrame {
         
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Logged in Successfully");
-                /*String student_id ="";
-                String q1 = "select student_id from student_info where username = '"+username+"' ";
-                ResultSet r = c1.s.executeQuery(q1);
-                if(r.next()){
-                    student_id = r.getString("student_id");
-                    String q2 = "update question_answer set student_id ='"+student_id+ "' ";
-                    c1.s.executeUpdate(q2);
-                }*/
                 new start().setVisible(true);
                 setVisible(false);
             }
