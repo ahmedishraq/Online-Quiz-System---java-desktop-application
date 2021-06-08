@@ -54,7 +54,6 @@ public class Question extends javax.swing.JFrame {
                           }
                           if(minute == 0 && second == 0){
                               state = false;
-                              //new Login().setVisible(true);
                               calculateScore();
                               JOptionPane.showMessageDialog(null,"Times up for your exam");
                               setVisible(false);
@@ -462,7 +461,6 @@ public class Question extends javax.swing.JFrame {
         try{
         Database_conn c1 = new Database_conn();
         String id = write_student_idTF.getText();
-        //String q2 = "select student_id from question_answer
         String q1 = "insert into score values('"+id+ "','" +wright+ "') ";
         c1.s.executeUpdate(q1);
         JOptionPane.showMessageDialog(null,"Correct Answer: "+wright+"\n Wrong Answer: "+wrong);
