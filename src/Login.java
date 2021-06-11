@@ -127,6 +127,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
+        if(usernameTF.getText().equals("") || passwordPF.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Enter the fields properly");
+        }
         try{
             Database_conn c1 = new Database_conn();
         
