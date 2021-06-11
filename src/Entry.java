@@ -84,7 +84,8 @@ public class Entry extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminBActionPerformed
-        // TODO add your handling code here:
+        new Admin().setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_AdminBActionPerformed
 
     private void studentBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentBActionPerformed
