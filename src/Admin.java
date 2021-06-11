@@ -78,6 +78,11 @@ public class Admin extends javax.swing.JFrame {
 
         registerB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         registerB.setText("Register");
+        registerB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,6 +175,11 @@ public class Admin extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_loginBActionPerformed
+
+    private void registerBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBActionPerformed
+        new Admin_Signup().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_registerBActionPerformed
 
     /**
      * @param args the command line arguments

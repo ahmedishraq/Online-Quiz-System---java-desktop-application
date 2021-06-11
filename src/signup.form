@@ -141,7 +141,7 @@
                   <Component id="registerB" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="backB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="56" max="32767" attributes="0"/>
+              <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
