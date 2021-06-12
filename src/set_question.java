@@ -8,6 +8,9 @@
  *
  * @author ahmed_ishraq
  */
+import javax.swing.*;
+import java.sql.*;
+
 public class set_question extends javax.swing.JFrame {
 
     /**
@@ -19,7 +22,7 @@ public class set_question extends javax.swing.JFrame {
     public set_question() {
         initComponents();
         setLocationRelativeTo(null);
-        hide();
+        //hide();
     }
 
     /**
@@ -285,111 +288,111 @@ public class set_question extends javax.swing.JFrame {
     }//GEN-LAST:event_backBActionPerformed
 
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
-        String ques_no = ques_noTF.getText();
-        String question = questionTF.getText();
-        String optionA = OptionATF.getText();
-        String optionB = OptionBTF.getText();
-        String optionC = OptionCTF.getText();
-        String optionD = OptionDTF.getText();
-        if(question_set.equals("A")){
-            try{
-                Database_conn c1 = new Database_conn();
-                String insert = "insert into set_A values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-                c1.s.executeUpdate(insert);
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        if(question_set.equals("B")){
-            try{
-                Database_conn c1 = new Database_conn();
-                String insert = "insert into set_B values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-                c1.s.executeUpdate(insert);
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        if(question_set.equals("C")){
-            try{
-                Database_conn c1 = new Database_conn();
-                String insert = "insert into set_C values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-                c1.s.executeUpdate(insert);
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        if(question_set.equals("D")){
-            try{
-                Database_conn c1 = new Database_conn();
-                String insert = "insert into set_D values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-                c1.s.executeUpdate(insert);
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
+//        String ques_no = ques_noTF.getText();
+//        String question = questionTF.getText();
+//        String optionA = OptionATF.getText();
+//        String optionB = OptionBTF.getText();
+//        String optionC = OptionCTF.getText();
+//        String optionD = OptionDTF.getText();
+//        if(question_set.equals("A")){
+//            try{
+//                Database_conn c1 = new Database_conn();
+//                String insert = "insert into set_A values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+//                c1.s.executeUpdate(insert);
+//            }
+//            catch(Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//        if(question_set.equals("B")){
+//            try{
+//                Database_conn c1 = new Database_conn();
+//                String insert = "insert into set_B values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+//                c1.s.executeUpdate(insert);
+//            }
+//            catch(Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//        if(question_set.equals("C")){
+//            try{
+//                Database_conn c1 = new Database_conn();
+//                String insert = "insert into set_C values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+//                c1.s.executeUpdate(insert);
+//            }
+//            catch(Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//        if(question_set.equals("D")){
+//            try{
+//                Database_conn c1 = new Database_conn();
+//                String insert = "insert into set_D values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+//                c1.s.executeUpdate(insert);
+//            }
+//            catch(Exception e){
+//                e.printStackTrace();
+//            }
+//        }
     }//GEN-LAST:event_submitBActionPerformed
 
     private void set_questionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_questionBActionPerformed
-        String time = timeTF.getText();
-        String course_code = course_codeTF.getText();
-        question_set = (String) setCB.getSelectedItem();
-        try{
-            Database
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        set_questionB.setVisible(false);
-        timeL.setVisible(false);
-        timeTF.setVisible(false);
-        minL.setVisible(false);
-        course_codeL.setVisible(false);
-        course_codeTF.setVisible(false);
-        setL.setVisible(false);
-        setCB.setVisible(false);
-        show();
+//        String time = timeTF.getText();
+//        String course_code = course_codeTF.getText();
+//        question_set = (String) setCB.getSelectedItem();
+//        try{
+//            //Database
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        
+//        set_questionB.setVisible(false);
+//        timeL.setVisible(false);
+//        timeTF.setVisible(false);
+//        minL.setVisible(false);
+//        course_codeL.setVisible(false);
+//        course_codeTF.setVisible(false);
+//        setL.setVisible(false);
+//        setCB.setVisible(false);
+//        show();
     }//GEN-LAST:event_set_questionBActionPerformed
 
-    public void show(){
-        ques_noL.setVisible(true);
-        ques_noTF.setVisible(true);
-        questionL.setVisible(true);
-        questionTF.setVisible(true);
-        optionAL.setVisible(true);
-        OptionATF.setVisible(true);
-        optionBL.setVisible(true);
-        OptionBTF.setVisible(true);
-        optionCL.setVisible(true);
-        OptionCTF.setVisible(true);
-        optionDL.setVisible(true);
-        OptionDTF.setVisible(true);
-        submitB.setVisible(true);
-        finishB.setVisible(true);
-        backB.setVisible(true);
-    }
+//    public void show(){
+//        ques_noL.setVisible(true);
+//        ques_noTF.setVisible(true);
+//        questionL.setVisible(true);
+//        questionTF.setVisible(true);
+//        optionAL.setVisible(true);
+//        OptionATF.setVisible(true);
+//        optionBL.setVisible(true);
+//        OptionBTF.setVisible(true);
+//        optionCL.setVisible(true);
+//        OptionCTF.setVisible(true);
+//        optionDL.setVisible(true);
+//        OptionDTF.setVisible(true);
+//        submitB.setVisible(true);
+//        finishB.setVisible(true);
+//        backB.setVisible(true);
+//    }
     
-    public void hide(){
-        ques_noL.setVisible(false);
-        ques_noTF.setVisible(false);
-        questionL.setVisible(false);
-        questionTF.setVisible(false);
-        optionAL.setVisible(false);
-        OptionATF.setVisible(false);
-        optionBL.setVisible(false);
-        OptionBTF.setVisible(false);
-        optionCL.setVisible(false);
-        OptionCTF.setVisible(false);
-        optionDL.setVisible(false);
-        OptionDTF.setVisible(false);
-        submitB.setVisible(false);
-        finishB.setVisible(false);
-        backB.setVisible(false);
-    }
+//    public void hide(){
+//        ques_noL.setVisible(false);
+//        ques_noTF.setVisible(false);
+//        questionL.setVisible(false);
+//        questionTF.setVisible(false);
+//        optionAL.setVisible(false);
+//        OptionATF.setVisible(false);
+//        optionBL.setVisible(false);
+//        OptionBTF.setVisible(false);
+//        optionCL.setVisible(false);
+//        OptionCTF.setVisible(false);
+//        optionDL.setVisible(false);
+//        OptionDTF.setVisible(false);
+//        submitB.setVisible(false);
+//        finishB.setVisible(false);
+//        backB.setVisible(false);
+//    }
     
     /**
      * @param args the command line arguments

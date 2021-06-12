@@ -183,6 +183,7 @@ public class Admin extends javax.swing.JFrame {
                 if(rs.next()){
                     JOptionPane.showMessageDialog(null,"Logged in Successfully");
                     setVisible(false);
+                    new set_question().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Incorrect Username or Password"+"\nPlease try again");
