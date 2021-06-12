@@ -13,9 +13,13 @@ public class set_question extends javax.swing.JFrame {
     /**
      * Creates new form set_question
      */
+    
+    String question_set = null;
+    
     public set_question() {
         initComponents();
         setLocationRelativeTo(null);
+        hide();
     }
 
     /**
@@ -51,6 +55,7 @@ public class set_question extends javax.swing.JFrame {
         course_codeTF = new javax.swing.JTextField();
         finishB = new javax.swing.JButton();
         backB = new javax.swing.JButton();
+        set_questionB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +117,11 @@ public class set_question extends javax.swing.JFrame {
 
         submitB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         submitB.setText("Submit");
+        submitB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBActionPerformed(evt);
+            }
+        });
 
         course_codeL.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         course_codeL.setText("Course Code:");
@@ -123,54 +133,72 @@ public class set_question extends javax.swing.JFrame {
 
         backB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         backB.setText("Back");
+        backB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBActionPerformed(evt);
+            }
+        });
+
+        set_questionB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        set_questionB.setText("Set Question");
+        set_questionB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                set_questionBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ques_noL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ques_noTF, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(timeL)
-                        .addGap(31, 31, 31)
-                        .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(minL)
-                        .addGap(62, 62, 62)
-                        .addComponent(setL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(setCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(course_codeL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(course_codeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(questionL)
-                            .addComponent(optionAL)
-                            .addComponent(optionBL)
-                            .addComponent(optionCL)
-                            .addComponent(optionDL))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(questionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(OptionDTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                                    .addComponent(OptionCTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(OptionBTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(OptionATF, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ques_noL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ques_noTF, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
+                                .addComponent(timeL)
+                                .addGap(31, 31, 31)
+                                .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(minL)
+                                .addGap(62, 62, 62)
+                                .addComponent(setL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(setCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(course_codeL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(course_codeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(submitB)
-                                    .addComponent(finishB)
-                                    .addComponent(backB))
-                                .addGap(27, 27, 27)))))
+                                    .addComponent(questionL)
+                                    .addComponent(optionAL)
+                                    .addComponent(optionBL)
+                                    .addComponent(optionCL)
+                                    .addComponent(optionDL))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(questionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(OptionDTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                                            .addComponent(OptionCTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(OptionBTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(OptionATF, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(submitB)
+                                            .addComponent(finishB)
+                                            .addComponent(backB))
+                                        .addGap(27, 27, 27))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(399, 399, 399)
+                        .addComponent(set_questionB)))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -216,7 +244,9 @@ public class set_question extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(backB)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(set_questionB)
+                .addGap(67, 67, 67))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -249,6 +279,118 @@ public class set_question extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_timeTFActionPerformed
 
+    private void backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBActionPerformed
+        setVisible(false);
+        new Admin().setVisible(true);
+    }//GEN-LAST:event_backBActionPerformed
+
+    private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
+        String ques_no = ques_noTF.getText();
+        String question = questionTF.getText();
+        String optionA = OptionATF.getText();
+        String optionB = OptionBTF.getText();
+        String optionC = OptionCTF.getText();
+        String optionD = OptionDTF.getText();
+        if(question_set.equals("A")){
+            try{
+                Database_conn c1 = new Database_conn();
+                String insert = "insert into set_A values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+                c1.s.executeUpdate(insert);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        if(question_set.equals("B")){
+            try{
+                Database_conn c1 = new Database_conn();
+                String insert = "insert into set_B values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+                c1.s.executeUpdate(insert);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        if(question_set.equals("C")){
+            try{
+                Database_conn c1 = new Database_conn();
+                String insert = "insert into set_C values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+                c1.s.executeUpdate(insert);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        if(question_set.equals("D")){
+            try{
+                Database_conn c1 = new Database_conn();
+                String insert = "insert into set_D values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
+                c1.s.executeUpdate(insert);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_submitBActionPerformed
+
+    private void set_questionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_questionBActionPerformed
+        String time = timeTF.getText();
+        String course_code = course_codeTF.getText();
+        question_set = (String) setCB.getSelectedItem();
+        try{
+            Database
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        set_questionB.setVisible(false);
+        timeL.setVisible(false);
+        timeTF.setVisible(false);
+        minL.setVisible(false);
+        course_codeL.setVisible(false);
+        course_codeTF.setVisible(false);
+        setL.setVisible(false);
+        setCB.setVisible(false);
+        show();
+    }//GEN-LAST:event_set_questionBActionPerformed
+
+    public void show(){
+        ques_noL.setVisible(true);
+        ques_noTF.setVisible(true);
+        questionL.setVisible(true);
+        questionTF.setVisible(true);
+        optionAL.setVisible(true);
+        OptionATF.setVisible(true);
+        optionBL.setVisible(true);
+        OptionBTF.setVisible(true);
+        optionCL.setVisible(true);
+        OptionCTF.setVisible(true);
+        optionDL.setVisible(true);
+        OptionDTF.setVisible(true);
+        submitB.setVisible(true);
+        finishB.setVisible(true);
+        backB.setVisible(true);
+    }
+    
+    public void hide(){
+        ques_noL.setVisible(false);
+        ques_noTF.setVisible(false);
+        questionL.setVisible(false);
+        questionTF.setVisible(false);
+        optionAL.setVisible(false);
+        OptionATF.setVisible(false);
+        optionBL.setVisible(false);
+        OptionBTF.setVisible(false);
+        optionCL.setVisible(false);
+        OptionCTF.setVisible(false);
+        optionDL.setVisible(false);
+        OptionDTF.setVisible(false);
+        submitB.setVisible(false);
+        finishB.setVisible(false);
+        backB.setVisible(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -305,6 +447,7 @@ public class set_question extends javax.swing.JFrame {
     private javax.swing.JTextField questionTF;
     private javax.swing.JComboBox<String> setCB;
     private javax.swing.JLabel setL;
+    private javax.swing.JButton set_questionB;
     private javax.swing.JLabel set_questionL;
     private javax.swing.JButton submitB;
     private javax.swing.JLabel timeL;
