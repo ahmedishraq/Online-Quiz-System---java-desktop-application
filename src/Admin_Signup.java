@@ -17,6 +17,7 @@ public class Admin_Signup extends javax.swing.JFrame {
     public Admin_Signup() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Admin Registration");
     }
 
     /**

@@ -30,6 +30,7 @@ public class Question extends javax.swing.JFrame {
         initComponents();
         timer();
         setLocationRelativeTo(null);
+        setTitle("Question Window");
     }
     public void timer(){
     state = true;

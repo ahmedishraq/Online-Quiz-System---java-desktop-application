@@ -25,6 +25,7 @@ public class answer extends javax.swing.JFrame {
     
     public answer() {
         initComponents();
+        setTitle("Answer Window");
         setLocationRelativeTo(null);
         c_ansPB.setVisible(false);
         w_ansPB.setVisible(false);

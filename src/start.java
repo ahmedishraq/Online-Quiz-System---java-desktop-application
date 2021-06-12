@@ -16,6 +16,7 @@ public class start extends javax.swing.JFrame {
     public start() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Honor Code");
     }
 
     /**

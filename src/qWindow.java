@@ -37,6 +37,7 @@ public class qWindow extends javax.swing.JFrame {
     
     public qWindow() {
         initComponents();
+        setTitle("Question Window");
         setLocationRelativeTo(null);
         submitB.setVisible(false);
         backB.setVisible(false);

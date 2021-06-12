@@ -16,6 +16,7 @@ public class Entry extends javax.swing.JFrame {
     public Entry() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Online Quiz");
     }
 
     /**
