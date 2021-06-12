@@ -88,10 +88,8 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="usernameL" max="32767" attributes="0"/>
                       <Component id="nameL" alignment="0" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="EmailL" alignment="0" max="32767" attributes="0"/>
-                          <Component id="passwordL" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="EmailL" alignment="0" max="32767" attributes="0"/>
+                      <Component id="passwordL" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">

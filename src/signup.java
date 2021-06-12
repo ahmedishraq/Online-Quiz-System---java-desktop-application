@@ -225,7 +225,6 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTFActionPerformed
 
     private void registerBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBActionPerformed
-      //  Database_conn c1 = new Database_conn();
         String name = nameTF.getText();
         String student_id = studentidTF.getText();
         String institution = institutionTF.getText();

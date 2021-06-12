@@ -173,9 +173,26 @@ public class Admin_Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordPFActionPerformed
 
     private void registerBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBActionPerformed
-        JOptionPane.showMessageDialog(null,"Registered Successfully!");
-        new Admin().setVisible(true);
-        setVisible(false);
+        String name = nameTF.getText();
+        String username = usernameTF.getText();
+        String password = passwordPF.getText();
+        String email = emailTF.getText();
+        if(name.equals("") || username.equals("") || password.equals("") || email.equals("")){
+            JOptionPane.showMessageDialog(null,"Fill up all the required fields");
+        }
+        else{
+            try{
+                Database_conn c1 = new Database_conn();
+                String insert = "insert into admin_info values('"+name+"', '"+username+"' , '"+password+"' , '"+email+"')";
+                c1.s.executeUpdate(insert);
+                JOptionPane.showMessageDialog(null,"Registered Successfully!");
+                setVisible(false);
+                new Admin().setVisible(true);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_registerBActionPerformed
 
     private void backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBActionPerformed
