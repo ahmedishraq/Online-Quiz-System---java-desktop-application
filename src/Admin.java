@@ -9,6 +9,7 @@
  * @author ahmed_ishraq
  */
 import javax.swing.*;
+import java.sql.*;
 public class Admin extends javax.swing.JFrame {
 
     /**
@@ -168,11 +169,27 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_clearBActionPerformed
 
     private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
+        String username = usernameTF.getText();
+        String password = passwordPF.getText();
         if(usernameTF.getText().equals("") || passwordPF.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Enter username and password to login");
         }
         else{
-            
+            try{
+                Database_conn c1 = new Database_conn();
+                String search = "select * from admin_info where username = '"+username+"' and password = '"+password+"' ";
+                ResultSet rs = c1.s.executeQuery(search);
+                if(rs.next()){
+                    JOptionPane.showMessageDialog(null,"Logged in Successfully");
+                    setVisible(false);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Incorrect Username or Password"+"\nPlease try again");
+                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_loginBActionPerformed
 
