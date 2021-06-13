@@ -22,7 +22,7 @@ public class set_question extends javax.swing.JFrame {
     public set_question() {
         initComponents();
         setLocationRelativeTo(null);
-        //hide();
+        hide();
     }
 
     /**
@@ -59,6 +59,7 @@ public class set_question extends javax.swing.JFrame {
         finishB = new javax.swing.JButton();
         backB = new javax.swing.JButton();
         set_questionB = new javax.swing.JButton();
+        set_backB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +134,11 @@ public class set_question extends javax.swing.JFrame {
 
         finishB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         finishB.setText("Finish");
+        finishB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishBActionPerformed(evt);
+            }
+        });
 
         backB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         backB.setText("Back");
@@ -147,6 +153,14 @@ public class set_question extends javax.swing.JFrame {
         set_questionB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 set_questionBActionPerformed(evt);
+            }
+        });
+
+        set_backB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        set_backB.setText("Back");
+        set_backB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                set_backBActionPerformed(evt);
             }
         });
 
@@ -200,8 +214,10 @@ public class set_question extends javax.swing.JFrame {
                                             .addComponent(backB))
                                         .addGap(27, 27, 27))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(399, 399, 399)
-                        .addComponent(set_questionB)))
+                        .addGap(279, 279, 279)
+                        .addComponent(set_questionB)
+                        .addGap(120, 120, 120)
+                        .addComponent(set_backB)))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,9 +263,11 @@ public class set_question extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(backB)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(set_questionB)
-                .addGap(67, 67, 67))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(set_questionB)
+                    .addComponent(set_backB))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,8 +301,16 @@ public class set_question extends javax.swing.JFrame {
     }//GEN-LAST:event_timeTFActionPerformed
 
     private void backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBActionPerformed
-        setVisible(false);
-        new Admin().setVisible(true);
+        hide();
+        set_questionB.setVisible(true);
+        timeL.setVisible(true);
+        timeTF.setVisible(true);
+        minL.setVisible(true);
+        course_codeL.setVisible(true);
+        course_codeTF.setVisible(true);
+        setL.setVisible(true);
+        setCB.setVisible(true);
+        set_backB.setVisible(true);
     }//GEN-LAST:event_backBActionPerformed
 
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
@@ -346,53 +372,61 @@ public class set_question extends javax.swing.JFrame {
 //        catch(Exception e){
 //            e.printStackTrace();
 //        }
-//        
-//        set_questionB.setVisible(false);
-//        timeL.setVisible(false);
-//        timeTF.setVisible(false);
-//        minL.setVisible(false);
-//        course_codeL.setVisible(false);
-//        course_codeTF.setVisible(false);
-//        setL.setVisible(false);
-//        setCB.setVisible(false);
-//        show();
+        
+        set_questionB.setVisible(false);
+        timeL.setVisible(false);
+        timeTF.setVisible(false);
+        minL.setVisible(false);
+        course_codeL.setVisible(false);
+        course_codeTF.setVisible(false);
+        setL.setVisible(false);
+        setCB.setVisible(false);
+        set_backB.setVisible(false);
+        // ******* show other sections *********
+        ques_noL.setVisible(true);
+        ques_noTF.setVisible(true);
+        questionL.setVisible(true);
+        questionTF.setVisible(true);
+        optionAL.setVisible(true);
+        OptionATF.setVisible(true);
+        optionBL.setVisible(true);
+        OptionBTF.setVisible(true);
+        optionCL.setVisible(true);
+        OptionCTF.setVisible(true);
+        optionDL.setVisible(true);
+        OptionDTF.setVisible(true);
+        submitB.setVisible(true);
+        finishB.setVisible(true);
+        backB.setVisible(true);
+        //**************************
     }//GEN-LAST:event_set_questionBActionPerformed
 
-//    public void show(){
-//        ques_noL.setVisible(true);
-//        ques_noTF.setVisible(true);
-//        questionL.setVisible(true);
-//        questionTF.setVisible(true);
-//        optionAL.setVisible(true);
-//        OptionATF.setVisible(true);
-//        optionBL.setVisible(true);
-//        OptionBTF.setVisible(true);
-//        optionCL.setVisible(true);
-//        OptionCTF.setVisible(true);
-//        optionDL.setVisible(true);
-//        OptionDTF.setVisible(true);
-//        submitB.setVisible(true);
-//        finishB.setVisible(true);
-//        backB.setVisible(true);
-//    }
-    
-//    public void hide(){
-//        ques_noL.setVisible(false);
-//        ques_noTF.setVisible(false);
-//        questionL.setVisible(false);
-//        questionTF.setVisible(false);
-//        optionAL.setVisible(false);
-//        OptionATF.setVisible(false);
-//        optionBL.setVisible(false);
-//        OptionBTF.setVisible(false);
-//        optionCL.setVisible(false);
-//        OptionCTF.setVisible(false);
-//        optionDL.setVisible(false);
-//        OptionDTF.setVisible(false);
-//        submitB.setVisible(false);
-//        finishB.setVisible(false);
-//        backB.setVisible(false);
-//    }
+    private void set_backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_backBActionPerformed
+        new Admin().setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_set_backBActionPerformed
+
+    private void finishBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBActionPerformed
+        this.dispose();
+        new Admin().setVisible(true);
+    }//GEN-LAST:event_finishBActionPerformed
+        public void hide(){
+        ques_noL.setVisible(false);
+        ques_noTF.setVisible(false);
+        questionL.setVisible(false);
+        questionTF.setVisible(false);
+        optionAL.setVisible(false);
+        OptionATF.setVisible(false);
+        optionBL.setVisible(false);
+        OptionBTF.setVisible(false);
+        optionCL.setVisible(false);
+        OptionCTF.setVisible(false);
+        optionDL.setVisible(false);
+        OptionDTF.setVisible(false);
+        submitB.setVisible(false);
+        finishB.setVisible(false);
+        backB.setVisible(false);
+    }
     
     /**
      * @param args the command line arguments
@@ -450,6 +484,7 @@ public class set_question extends javax.swing.JFrame {
     private javax.swing.JTextField questionTF;
     private javax.swing.JComboBox<String> setCB;
     private javax.swing.JLabel setL;
+    private javax.swing.JButton set_backB;
     private javax.swing.JButton set_questionB;
     private javax.swing.JLabel set_questionL;
     private javax.swing.JButton submitB;
