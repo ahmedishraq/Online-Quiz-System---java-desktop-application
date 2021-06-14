@@ -60,6 +60,8 @@ public class set_question extends javax.swing.JFrame {
         backB = new javax.swing.JButton();
         set_questionB = new javax.swing.JButton();
         set_backB = new javax.swing.JButton();
+        answerL = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,6 +166,11 @@ public class set_question extends javax.swing.JFrame {
             }
         });
 
+        answerL.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        answerL.setText("Answer:");
+
+        jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,7 +204,8 @@ public class set_question extends javax.swing.JFrame {
                                     .addComponent(optionAL)
                                     .addComponent(optionBL)
                                     .addComponent(optionCL)
-                                    .addComponent(optionDL))
+                                    .addComponent(optionDL)
+                                    .addComponent(answerL))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(questionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,7 +214,8 @@ public class set_question extends javax.swing.JFrame {
                                             .addComponent(OptionDTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                                             .addComponent(OptionCTF, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(OptionBTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(OptionATF, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(OptionATF, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(submitB)
@@ -214,11 +223,11 @@ public class set_question extends javax.swing.JFrame {
                                             .addComponent(backB))
                                         .addGap(27, 27, 27))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
+                        .addGap(202, 202, 202)
                         .addComponent(set_questionB)
-                        .addGap(120, 120, 120)
+                        .addGap(183, 183, 183)
                         .addComponent(set_backB)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,24 +259,32 @@ public class set_question extends javax.swing.JFrame {
                     .addComponent(OptionBTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(finishB)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(optionCL)
-                    .addComponent(OptionCTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(optionDL)
-                            .addComponent(OptionDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(backB)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(set_questionB)
-                    .addComponent(set_backB))
-                .addGap(65, 65, 65))
+                            .addComponent(optionCL)
+                            .addComponent(OptionCTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(optionDL)
+                                    .addComponent(OptionDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(answerL)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(backB)))
+                        .addContainerGap(150, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(set_questionB)
+                            .addComponent(set_backB))
+                        .addGap(30, 30, 30))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -314,12 +331,12 @@ public class set_question extends javax.swing.JFrame {
     }//GEN-LAST:event_backBActionPerformed
 
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
-//        String ques_no = ques_noTF.getText();
-//        String question = questionTF.getText();
-//        String optionA = OptionATF.getText();
-//        String optionB = OptionBTF.getText();
-//        String optionC = OptionCTF.getText();
-//        String optionD = OptionDTF.getText();
+        String ques_no = ques_noTF.getText();
+        String question = questionTF.getText();
+        String optionA = OptionATF.getText();
+        String optionB = OptionBTF.getText();
+        String optionC = OptionCTF.getText();
+        String optionD = OptionDTF.getText();
 //        if(question_set.equals("A")){
 //            try{
 //                Database_conn c1 = new Database_conn();
@@ -360,6 +377,20 @@ public class set_question extends javax.swing.JFrame {
 //                e.printStackTrace();
 //            }
 //        }
+        try{
+            Database_conn c1 = new Database_conn();
+            String insert = "insert into question values('"+ques_no+"' , '"+question+"' , '"+optionA+"' , '"+optionB+"' , '"+optionC+"' , '"+optionD+"')";
+            c1.s.executeUpdate(insert);
+            ques_noTF.setText("");
+            questionTF.setText("");
+            OptionATF.setText("");
+            OptionBTF.setText("");
+            OptionCTF.setText("");
+            OptionDTF.setText("");
+         }
+         catch(Exception e){
+            e.printStackTrace();
+         }
     }//GEN-LAST:event_submitBActionPerformed
 
     private void set_questionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_questionBActionPerformed
@@ -395,6 +426,8 @@ public class set_question extends javax.swing.JFrame {
         OptionCTF.setVisible(true);
         optionDL.setVisible(true);
         OptionDTF.setVisible(true);
+        answerL.setVisible(true);
+        jTextField1.setVisible(true);
         submitB.setVisible(true);
         finishB.setVisible(true);
         backB.setVisible(true);
@@ -423,6 +456,8 @@ public class set_question extends javax.swing.JFrame {
         OptionCTF.setVisible(false);
         optionDL.setVisible(false);
         OptionDTF.setVisible(false);
+        answerL.setVisible(false);
+        jTextField1.setVisible(false);
         submitB.setVisible(false);
         finishB.setVisible(false);
         backB.setVisible(false);
@@ -468,11 +503,13 @@ public class set_question extends javax.swing.JFrame {
     private javax.swing.JTextField OptionBTF;
     private javax.swing.JTextField OptionCTF;
     private javax.swing.JTextField OptionDTF;
+    private javax.swing.JLabel answerL;
     private javax.swing.JButton backB;
     private javax.swing.JLabel course_codeL;
     private javax.swing.JTextField course_codeTF;
     private javax.swing.JButton finishB;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel minL;
     private javax.swing.JLabel optionAL;
     private javax.swing.JLabel optionBL;
