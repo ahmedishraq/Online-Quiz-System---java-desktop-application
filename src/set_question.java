@@ -55,13 +55,13 @@ public class set_question extends javax.swing.JFrame {
         minL = new javax.swing.JLabel();
         submitB = new javax.swing.JButton();
         course_codeL = new javax.swing.JLabel();
-        course_codeTF = new javax.swing.JTextField();
         finishB = new javax.swing.JButton();
         backB = new javax.swing.JButton();
         set_questionB = new javax.swing.JButton();
         set_backB = new javax.swing.JButton();
         answerL = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        answerTF = new javax.swing.JTextField();
+        course_codeCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,8 +132,6 @@ public class set_question extends javax.swing.JFrame {
         course_codeL.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         course_codeL.setText("Course Code:");
 
-        course_codeTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         finishB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         finishB.setText("Finish");
         finishB.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +167,10 @@ public class set_question extends javax.swing.JFrame {
         answerL.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         answerL.setText("Answer:");
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        answerTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        course_codeCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        course_codeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Course Code", "CSE101", "CSE102" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -196,8 +197,8 @@ public class set_question extends javax.swing.JFrame {
                                 .addComponent(setCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)
                                 .addComponent(course_codeL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(course_codeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(course_codeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(questionL)
@@ -215,7 +216,7 @@ public class set_question extends javax.swing.JFrame {
                                             .addComponent(OptionCTF, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(OptionBTF, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(OptionATF, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(answerTF, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(submitB)
@@ -227,7 +228,7 @@ public class set_question extends javax.swing.JFrame {
                         .addComponent(set_questionB)
                         .addGap(183, 183, 183)
                         .addComponent(set_backB)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +243,7 @@ public class set_question extends javax.swing.JFrame {
                     .addComponent(setCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(minL)
                     .addComponent(course_codeL)
-                    .addComponent(course_codeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(course_codeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(questionL)
@@ -274,7 +275,7 @@ public class set_question extends javax.swing.JFrame {
                                 .addGap(41, 41, 41)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(answerL)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(answerTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(backB)))
@@ -324,7 +325,7 @@ public class set_question extends javax.swing.JFrame {
         timeTF.setVisible(true);
         minL.setVisible(true);
         course_codeL.setVisible(true);
-        course_codeTF.setVisible(true);
+        course_codeCB.setVisible(true);
         setL.setVisible(true);
         setCB.setVisible(true);
         set_backB.setVisible(true);
@@ -337,6 +338,7 @@ public class set_question extends javax.swing.JFrame {
         String optionB = OptionBTF.getText();
         String optionC = OptionCTF.getText();
         String optionD = OptionDTF.getText();
+        String answer = answerTF.getText();
 //        if(question_set.equals("A")){
 //            try{
 //                Database_conn c1 = new Database_conn();
@@ -379,7 +381,7 @@ public class set_question extends javax.swing.JFrame {
 //        }
         try{
             Database_conn c1 = new Database_conn();
-            String insert = "insert into question values('"+ques_no+"' , '"+question+"' , '"+optionA+"' , '"+optionB+"' , '"+optionC+"' , '"+optionD+"')";
+            String insert = "insert into question values('"+ques_no+"' , '"+question+"' , '"+optionA+"' , '"+optionB+"' , '"+optionC+"' , '"+optionD+"' , '"+answer+"')";
             c1.s.executeUpdate(insert);
             ques_noTF.setText("");
             questionTF.setText("");
@@ -387,6 +389,7 @@ public class set_question extends javax.swing.JFrame {
             OptionBTF.setText("");
             OptionCTF.setText("");
             OptionDTF.setText("");
+            answerTF.setText("");
          }
          catch(Exception e){
             e.printStackTrace();
@@ -409,7 +412,7 @@ public class set_question extends javax.swing.JFrame {
         timeTF.setVisible(false);
         minL.setVisible(false);
         course_codeL.setVisible(false);
-        course_codeTF.setVisible(false);
+        course_codeCB.setVisible(false);
         setL.setVisible(false);
         setCB.setVisible(false);
         set_backB.setVisible(false);
@@ -427,7 +430,7 @@ public class set_question extends javax.swing.JFrame {
         optionDL.setVisible(true);
         OptionDTF.setVisible(true);
         answerL.setVisible(true);
-        jTextField1.setVisible(true);
+        answerTF.setVisible(true);
         submitB.setVisible(true);
         finishB.setVisible(true);
         backB.setVisible(true);
@@ -457,7 +460,8 @@ public class set_question extends javax.swing.JFrame {
         optionDL.setVisible(false);
         OptionDTF.setVisible(false);
         answerL.setVisible(false);
-        jTextField1.setVisible(false);
+        answerTF.setVisible(false);
+        answerTF.setVisible(false);
         submitB.setVisible(false);
         finishB.setVisible(false);
         backB.setVisible(false);
@@ -504,12 +508,12 @@ public class set_question extends javax.swing.JFrame {
     private javax.swing.JTextField OptionCTF;
     private javax.swing.JTextField OptionDTF;
     private javax.swing.JLabel answerL;
+    private javax.swing.JTextField answerTF;
     private javax.swing.JButton backB;
+    private javax.swing.JComboBox<String> course_codeCB;
     private javax.swing.JLabel course_codeL;
-    private javax.swing.JTextField course_codeTF;
     private javax.swing.JButton finishB;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel minL;
     private javax.swing.JLabel optionAL;
     private javax.swing.JLabel optionBL;
