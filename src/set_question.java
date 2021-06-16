@@ -329,7 +329,6 @@ public class set_question extends javax.swing.JFrame {
         setL.setVisible(true);
         setCB.setVisible(true);
         set_backB.setVisible(true);
-//                    set_backB.setVisible(true);
 
     }//GEN-LAST:event_backBActionPerformed
 
