@@ -27,7 +27,7 @@ public class qWindow extends javax.swing.JFrame {
     static DecimalFormat dFormat = new DecimalFormat("00");
     static boolean state = true;
     //*******************************************
-    static int count = 0;
+    static int count = 1;
     String question [][] = new String[10][5];
     String answer [] = new String [5];
     String  a1, a2, a3, a4, a5;
@@ -106,13 +106,30 @@ public class qWindow extends javax.swing.JFrame {
     }
     
     public void startExam(int count){
-        setQuestion();
-        q_noL.setText("Q"+(count+1)+". ");
-        questionL.setText(question[count][0]);
-        aRB.setText(question[count][1]);
-        bRB.setText(question[count][2]);
-        cRB.setText(question[count][3]);
-        dRB.setText(question[count][4]);
+//        setQuestion();
+//        q_noL.setText("Q"+(count+1)+". ");
+//        questionL.setText(question[count][0]);
+//        aRB.setText(question[count][1]);
+//        bRB.setText(question[count][2]);
+//        cRB.setText(question[count][3]);
+//        dRB.setText(question[count][4]);
+          try{
+              Database_conn c1 = new Database_conn();
+              String q_no = String.valueOf(count);
+              String fetch = "select * from question where ques_no='"+q_no+"'";
+              ResultSet rs = c1.s.executeQuery(fetch);
+              if(rs.next()){
+                  q_noL.setText(rs.getString("ques_no"));
+                  questionL.setText(rs.getString("question"));
+                  aRB.setText(rs.getString("option_A"));
+                  bRB.setText(rs.getString("option_B"));
+                  cRB.setText(rs.getString("option_C"));
+                  dRB.setText(rs.getString("option_D"));
+              }
+          }
+          catch(Exception e){
+              e.printStackTrace();
+          }
     }
 
     /**
@@ -371,7 +388,7 @@ public class qWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null," Write your Student ID to start your exam");
         }
         else{
-            startExam(0);
+            startExam(1);
             next_subB.setVisible(true);
             timer();
         }
@@ -387,7 +404,7 @@ public class qWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_next_subBActionPerformed
 // ******* Testing new method for check answer **********
     public void checkAnswer(){
-    if(count == 0){
+    if(count == 1){
         if(aRB.isSelected()){
             a1 = aRB.getText();
         }
@@ -401,7 +418,7 @@ public class qWindow extends javax.swing.JFrame {
             a1 = dRB.getText();
         }
     }
-    if(count == 1){
+    if(count == 2){
         if(aRB.isSelected()){
             a2 = aRB.getText();
         }
@@ -415,7 +432,7 @@ public class qWindow extends javax.swing.JFrame {
             a2 = dRB.getText();
         }
     }
-    if(count == 2){
+    if(count == 3){
         if(aRB.isSelected()){
             a3 = aRB.getText();
         }
@@ -429,7 +446,7 @@ public class qWindow extends javax.swing.JFrame {
             a3 = dRB.getText();
         }
     }
-    if(count == 3){
+    if(count == 4){
         if(aRB.isSelected()){
             a4 = aRB.getText();
         }
@@ -446,7 +463,7 @@ public class qWindow extends javax.swing.JFrame {
     }
     // *********************************
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
-         if(count == 4){
+         if(count == 5){
         if(aRB.isSelected()){
             a5 = aRB.getText();
         }
@@ -495,7 +512,7 @@ public class qWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_backBActionPerformed
 
     public void showButton(){
-        if(count == 4){
+        if(count == 5){
             submitB.setVisible(true);
             next_subB.setVisible(false);
         }
@@ -503,7 +520,7 @@ public class qWindow extends javax.swing.JFrame {
             submitB.setVisible(false);
             next_subB.setVisible(true);
         }
-        if(count == 0){
+        if(count == 1){
             backB.setVisible(false);
         }
     }
@@ -564,6 +581,8 @@ public class qWindow extends javax.swing.JFrame {
            String query ="select time from question_info where course_code='"+course_code+"'";
            ResultSet rs =c1.s.executeQuery(query);
            if(rs.next()){
+               // formula to get info from database
+               // String something = rs.getString("column name of particular database")
                somoy = rs.getString("time");
                minute = Integer.parseInt(somoy);
            }
