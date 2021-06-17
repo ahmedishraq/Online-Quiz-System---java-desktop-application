@@ -21,7 +21,7 @@ public class qWindow extends javax.swing.JFrame {
      * Creates new form qWindow
      */
     // *************  For timer ****************
-    static int second = 30;
+    static int second = 00;
     static int minute = 0;
     static String ddSecond, ddMinute;
     static DecimalFormat dFormat = new DecimalFormat("00");
@@ -39,6 +39,7 @@ public class qWindow extends javax.swing.JFrame {
         initComponents();
         setTitle("Question Window");
         setLocationRelativeTo(null);
+        time_label();
         submitB.setVisible(false);
         backB.setVisible(false);
         next_subB.setVisible(false);
@@ -556,6 +557,20 @@ public class qWindow extends javax.swing.JFrame {
     }
     
     public void timer(){
+        String somoy = null;
+       try{
+           Database_conn c1 = new Database_conn();
+           String course_code = "CSE101";
+           String query ="select time from question_info where course_code='"+course_code+"'";
+           ResultSet rs =c1.s.executeQuery(query);
+           if(rs.next()){
+               somoy = rs.getString("time");
+               minute = Integer.parseInt(somoy);
+           }
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
     state = true;
         Thread t = new Thread(){
           public void run(){
@@ -594,6 +609,27 @@ public class qWindow extends javax.swing.JFrame {
         };
         t.start();
     }
+    
+    // *********To set the time lable from database ********* 
+    public void time_label(){
+        String somoy = null;
+       try{
+           Database_conn c1 = new Database_conn();
+           String course_code = "CSE101";
+           String query ="select time from question_info where course_code='"+course_code+"'";
+           ResultSet rs =c1.s.executeQuery(query);
+           if(rs.next()){
+               somoy = rs.getString("time");
+               secondL.setText("00");
+               minuteL.setText(somoy);
+               //minute = Integer.parseInt(somoy);
+           }
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+    }
+    // *****************************
     
     /**
      * @param args the command line arguments

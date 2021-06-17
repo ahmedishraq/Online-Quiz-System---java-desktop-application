@@ -436,6 +436,19 @@ public class set_question extends javax.swing.JFrame {
         finishB.setVisible(true);
         backB.setVisible(true);
         //**************************
+        
+        try{
+            String time = timeTF.getText();
+            String set = (String) setCB.getSelectedItem();
+            String course_code = (String) course_codeCB.getSelectedItem(); 
+            
+            Database_conn c1 = new Database_conn();
+            String insert = "insert into question_info values('"+course_code+"' , '"+set+"' , '"+time+"')";
+            c1.s.executeUpdate(insert);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_set_questionBActionPerformed
 
     private void set_backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_backBActionPerformed
