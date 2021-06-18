@@ -11,7 +11,7 @@
 public class Entry extends javax.swing.JFrame {
 
     /**
-     * Creates new form Entry
+     * Creates new form Entry 
      */
     public Entry() {
         initComponents();
@@ -34,10 +34,10 @@ public class Entry extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        welcomeL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        welcomeL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         welcomeL.setText("Welcome To Online Quiz System");
 
-        AdminB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        AdminB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         AdminB.setText("Admin");
         AdminB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,7 +45,7 @@ public class Entry extends javax.swing.JFrame {
             }
         });
 
-        studentB.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        studentB.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         studentB.setText("Student");
         studentB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,27 +58,26 @@ public class Entry extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(318, 318, 318)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(welcomeL))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(studentB)
-                            .addComponent(AdminB, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(240, Short.MAX_VALUE))
+                    .addComponent(studentB)
+                    .addComponent(AdminB))
+                .addContainerGap(307, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(welcomeL)
+                .addGap(168, 168, 168))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(56, 56, 56)
                 .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(77, 77, 77)
                 .addComponent(AdminB)
-                .addGap(69, 69, 69)
+                .addGap(71, 71, 71)
                 .addComponent(studentB)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
