@@ -417,7 +417,6 @@ public class qWindow extends javax.swing.JFrame {
         else if(dRB.isSelected()){
             a1 = dRB.getText();
         }
-    }
     if(count == 2){
         if(aRB.isSelected()){
             a2 = aRB.getText();
@@ -461,6 +460,7 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
     }
+    }
     // *********************************
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
          if(count == 5){
@@ -478,16 +478,9 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
         state =false;
-        try{
-            Database_conn c1 = new Database_conn();
-            String query = "insert into check_answer values('"+student_id+"', '"+a1+"', '"+a2+"', '"+a3+"', '"+a4+"', '"+a5+"')";
-            c1.s.executeUpdate(query);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        score();
-        saveScore();
+        test();
+        //score();
+        //saveScore();
         new answer().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_submitBActionPerformed
@@ -570,6 +563,51 @@ public class qWindow extends javax.swing.JFrame {
         }
         catch(Exception e){
             e.printStackTrace();
+        }
+        // **  testing new for check answer
+        
+        
+        
+        
+        //*****
+    }
+    
+    public void test(){
+        for(int i=1;i<=5;i++){
+            String a = null;
+            try{
+                String no = String.valueOf(i);
+                Database_conn c1 = new Database_conn();
+                String check = "select * from question where ques_no ='"+no+"'";
+                ResultSet rs = c1.s.executeQuery(check);
+                while(rs.next()){
+                    a = rs.getString("answer");
+                }
+                System.out.println(a);
+                if(a1.equals(a)){
+                    System.out.println("Correct answer");
+                    break;
+                }
+                if(a2.equals(a)){
+                    System.out.println("Correct answer");
+                    break;
+                }
+                if(a3.equals(a)){
+                    System.out.println("Correct answer");
+                    break;
+                }
+                if(a4.equals(a)){
+                    System.out.println("Correct answer");
+                    break;
+                }
+                if(a5.equals(a)){
+                    System.out.println("Correct answer");
+                    break;
+                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
     
