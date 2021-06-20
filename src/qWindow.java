@@ -27,7 +27,7 @@ public class qWindow extends javax.swing.JFrame {
     static DecimalFormat dFormat = new DecimalFormat("00");
     static boolean state = true;
     //*******************************************
-    static int count = 1;
+    static int count = 0;
     String question [][] = new String[10][5];
     String answer [] = new String [5];
     String  a1, a2, a3, a4, a5;
@@ -87,7 +87,7 @@ public class qWindow extends javax.swing.JFrame {
     
     public void answer(){
              answer[0] = "James Gosling";
-             answer[1] ="Tim Cook";
+             answer[1] ="Mark Zuckerberg";
              answer[2] = "Sundar Pichai";
              answer[3] = "Bill Gates";
              answer[4] = "Jeff Bozes";
@@ -115,7 +115,7 @@ public class qWindow extends javax.swing.JFrame {
 //        dRB.setText(question[count][4]);
           try{
               Database_conn c1 = new Database_conn();
-              String q_no = String.valueOf(count);
+              String q_no = String.valueOf(count+1);
               String fetch = "select * from question where ques_no='"+q_no+"'";
               ResultSet rs = c1.s.executeQuery(fetch);
               if(rs.next()){
@@ -388,7 +388,7 @@ public class qWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null," Write your Student ID to start your exam");
         }
         else{
-            startExam(1);
+            startExam(0);
             next_subB.setVisible(true);
             timer();
         }
@@ -404,7 +404,7 @@ public class qWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_next_subBActionPerformed
 // ******* Testing new method for check answer **********
     public void checkAnswer(){
-    if(count == 1){
+    if(count == 0){
         if(aRB.isSelected()){
             a1 = aRB.getText();
         }
@@ -417,7 +417,8 @@ public class qWindow extends javax.swing.JFrame {
         else if(dRB.isSelected()){
             a1 = dRB.getText();
         }
-    if(count == 2){
+    }  
+    if(count == 1){
         if(aRB.isSelected()){
             a2 = aRB.getText();
         }
@@ -431,7 +432,7 @@ public class qWindow extends javax.swing.JFrame {
             a2 = dRB.getText();
         }
     }
-    if(count == 3){
+    if(count == 2){
         if(aRB.isSelected()){
             a3 = aRB.getText();
         }
@@ -445,7 +446,7 @@ public class qWindow extends javax.swing.JFrame {
             a3 = dRB.getText();
         }
     }
-    if(count == 4){
+    if(count == 3){
         if(aRB.isSelected()){
             a4 = aRB.getText();
         }
@@ -460,10 +461,9 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
     }
-    }
     // *********************************
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
-         if(count == 5){
+         if(count == 4){
         if(aRB.isSelected()){
             a5 = aRB.getText();
         }
@@ -478,9 +478,10 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
         state =false;
-        test();
         //score();
         //saveScore();
+        test();
+        saveScore();
         new answer().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_submitBActionPerformed
@@ -505,7 +506,7 @@ public class qWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_backBActionPerformed
 
     public void showButton(){
-        if(count == 5){
+        if(count == 4){
             submitB.setVisible(true);
             next_subB.setVisible(false);
         }
@@ -513,7 +514,7 @@ public class qWindow extends javax.swing.JFrame {
             submitB.setVisible(false);
             next_subB.setVisible(true);
         }
-        if(count == 1){
+        if(count == 0){
             backB.setVisible(false);
         }
     }
@@ -578,44 +579,62 @@ public class qWindow extends javax.swing.JFrame {
             String a = "";
             //try{
                 String no = String.valueOf(i);
-                System.out.println(no);
+                //System.out.println(no);
                 Database_conn c1 = new Database_conn();
                 String check = "select * from question where ques_no ='"+no+"'";
                 ResultSet rs = c1.s.executeQuery(check);
                 while(rs.next()){
                     a = rs.getString("answer");
                 }
-                System.out.println(a);
+               // System.out.println(a);
                 if(i == 1){
-                    System.out.println("test"+" "+a);
                     if(a1.equals(a)){
-                        System.out.println("Correct answer");
+                        correct++;
+                       // System.out.println("Correct answer");
                         //break;
+                    }
+                    else{
+                        wrong++;
                     }
                 }
                 if(i == 2){
-                    System.out.println(a2);
                     if(a2.equals(a)){
-                        System.out.println("Correct answer");
+                        correct++;
+                        //System.out.println("Correct answer");
                         //break;
+                    }
+                    else{
+                        wrong++;
                     }
                 }
                 if(i == 3){
                     if(a3.equals(a)){
-                        System.out.println("Correct answer");
+                        correct++;
+                        //System.out.println("Correct answer");
                         //break;
+                    }
+                    else{
+                        wrong++;
                     }
                 }
                 if(i == 4){
                     if(a4.equals(a)){
-                        System.out.println("Correct answer");
+                        correct++;
+                        //System.out.println("Correct answer");
                         //break;
+                    }
+                    else{
+                        wrong++;
                     }
                 }
                 if(i == 5){
                     if(a5.equals(a)){
-                        System.out.println("Correct answer");
+                        correct++;
+                        //System.out.println("Correct answer");
                         //break;
+                    }
+                    else{
+                        wrong++;
                     }
                 }
             //}
