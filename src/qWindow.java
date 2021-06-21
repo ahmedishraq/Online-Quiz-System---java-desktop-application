@@ -319,9 +319,22 @@ public class qWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null," Write your Student ID to start your exam");
         }
         else{
-            startExam(0);
-            next_subB.setVisible(true);
-            timer();
+            try{
+                Database_conn c1 = new Database_conn();
+                String check_id = "select student_id from student_info where student_id ='"+student_id+"'";
+                ResultSet rs = c1.s.executeQuery(check_id);
+                if(rs.next()){
+                    startExam(0);
+                    next_subB.setVisible(true);
+                    timer();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null," Sorry, Can not find your student ID");
+                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_startBActionPerformed
 
