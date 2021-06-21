@@ -27,6 +27,7 @@ public class answer extends javax.swing.JFrame {
         initComponents();
         setTitle("Answer Window");
         setLocationRelativeTo(null);
+        showAnswer();
         c_ansPB.setVisible(false);
         w_ansPB.setVisible(false);
         c_ansL.setVisible(false);
@@ -55,6 +56,16 @@ public class answer extends javax.swing.JFrame {
         q4L = new javax.swing.JLabel();
         ans5L = new javax.swing.JLabel();
         q5L = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         c_ansL = new javax.swing.JLabel();
         w_ansL = new javax.swing.JLabel();
@@ -68,77 +79,142 @@ public class answer extends javax.swing.JFrame {
         ansP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         q1L.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        q1L.setText("Q1:   Inventor of JAVA");
 
         ans1L.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ans1L.setText("ANS:  James Gosling");
 
         q2L.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        q2L.setText("Q2:   Current CEO of Apple Inc.");
 
         ans2L.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ans2L.setText("ANS:  Tim Cook");
 
         ans3L.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ans3L.setText("ANS:  Sundar Pichai");
 
         q3L.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        q3L.setText("Q3:   Current CEO of Google");
 
         ans4L.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ans4L.setText("ANS:  Bill Gates");
 
         q4L.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        q4L.setText("Q4:   Creator of Microsoft");
 
         ans5L.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ans5L.setText("ANS:  Jeff Bozes");
 
         q5L.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        q5L.setText("Q5:   Current Ceo of Amazon");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setText("Q1:");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("ANS:");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setText("Q2:");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setText("ANS:");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel5.setText("Q3:");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("ANS:");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setText("Q4:");
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setText("ANS:");
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setText("Q5:");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setText("ANS:");
 
         javax.swing.GroupLayout ansPLayout = new javax.swing.GroupLayout(ansP);
         ansP.setLayout(ansPLayout);
         ansPLayout.setHorizontalGroup(
             ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ansPLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
                 .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(q1L, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ans1L, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(q2L, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ans2L, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ans3L, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(q3L, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ans4L, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(q4L, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ans5L, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(q5L, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ansPLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(q1L, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ansPLayout.createSequentialGroup()
+                        .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ansPLayout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLabel5)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ansPLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7))
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                        .addGap(18, 18, 18)
+                        .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(q2L, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ans1L)
+                            .addComponent(ans2L, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(q3L, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ans3L, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(q4L, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ans4L, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(q5L, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ans5L, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         ansPLayout.setVerticalGroup(
             ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ansPLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(q1L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q1L)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(ans1L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ans1L)
+                    .addComponent(jLabel2))
                 .addGap(20, 20, 20)
-                .addComponent(q2L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q2L)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(ans2L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ans2L)
+                    .addComponent(jLabel4))
                 .addGap(20, 20, 20)
-                .addComponent(q3L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q3L)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(ans3L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ans3L)
+                    .addComponent(jLabel6))
                 .addGap(20, 20, 20)
-                .addComponent(q4L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q4L)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
-                .addComponent(ans4L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ans4L)
+                    .addComponent(jLabel8))
                 .addGap(20, 20, 20)
-                .addComponent(q5L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q5L)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
-                .addComponent(ans5L)
+                .addGroup(ansPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ans5L)
+                    .addComponent(jLabel10))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -214,7 +290,7 @@ public class answer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(27, Short.MAX_VALUE))
+                        .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(finishB)
@@ -273,6 +349,46 @@ public class answer extends javax.swing.JFrame {
         
     }
     
+    public void showAnswer(){
+        try{
+            for(int i=1;i<=5;i++){
+                String question = null;
+                String answer = null;
+                String q_no = String.valueOf(i);
+                Database_conn c1 = new Database_conn();
+                String retrive = "select * from question where ques_no='"+q_no+"'";
+                ResultSet rs = c1.s.executeQuery(retrive);
+                while(rs.next()){
+                     question = rs.getString("question");
+                     answer = rs.getString("answer");
+                }
+                if(i == 1){
+                    q1L.setText(question);
+                    ans1L.setText(answer);
+                }
+                if(i == 2){
+                    q2L.setText(question);
+                    ans2L.setText(answer);
+                }
+                if(i == 3){
+                    q3L.setText(question);
+                    ans3L.setText(answer);
+                }
+                if(i == 4){
+                    q4L.setText(question);
+                    ans4L.setText(answer);
+                }
+                if(i == 5){
+                    q5L.setText(question);
+                    ans5L.setText(answer);
+                }
+             }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -318,6 +434,16 @@ public class answer extends javax.swing.JFrame {
     private javax.swing.JLabel c_ansL;
     private javax.swing.JProgressBar c_ansPB;
     private javax.swing.JButton finishB;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel q1L;
     private javax.swing.JLabel q2L;
