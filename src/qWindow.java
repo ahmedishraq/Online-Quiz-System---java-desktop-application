@@ -28,8 +28,6 @@ public class qWindow extends javax.swing.JFrame {
     static boolean state = true;
     //*******************************************
     static int count = 0;
-    String question [][] = new String[10][5];
-    String answer [] = new String [5];
     String  a1, a2, a3, a4, a5;
     String student_id = null;
     int correct = 0;
@@ -43,76 +41,9 @@ public class qWindow extends javax.swing.JFrame {
         submitB.setVisible(false);
         backB.setVisible(false);
         next_subB.setVisible(false);
-        saveAnswer();
-    }
-    
-    public void setQuestion(){
-        question[0][0] = "Inventor of JAVA";
-        question[0][1] = "Steve Jobs";
-        question[0][2] = "Bill Gates";
-        question[0][3] = "James Gosling";
-        question[0][4] = "Sundar Pichai";
-         
-        
-        question[1][0] = "Current SEO of Apple Inc.";
-        question[1][1] = "Steve Jobs";
-        question[1][2] = "Bill Gates";
-        question[1][3] = "Tim Cook";
-        question[1][4] = "Sundar Pichai";
-         
-        
-        question[2][0] = "Current CEO of Google";
-        question[2][1] = "Steve Jobs";
-        question[2][2] = "Bill Gates";
-        question[2][3] = "James Gosling";
-        question[2][4] = "Sundar Pichai";
-         
-        
-        question[3][0] = "Creator of Microsoft";
-        question[3][1] = "Steve Jobs";
-        question[3][2] = "Bill Gates";
-        question[3][3] = "James Gosling";
-        question[3][4] = "Sundar Pichai";
-         
-        
-        question[4][0] = "Current CEO of Amazon";
-        question[4][1] = "Jeff Bozes";
-        question[4][2] = "Bill Gates";
-        question[4][3] = "James Gosling";
-        question[4][4] = "Sundar Pichai";
-         
-        
-        
-    }
-    
-    public void answer(){
-             answer[0] = "James Gosling";
-             answer[1] ="Mark Zuckerberg";
-             answer[2] = "Sundar Pichai";
-             answer[3] = "Bill Gates";
-             answer[4] = "Jeff Bozes";
-    }
-    
-    public void saveAnswer(){
-        try{
-             Database_conn c1 =new Database_conn();
-             answer();
-             String query = "insert into answer values('"+answer[0]+"', '"+answer[1]+"', '"+answer[2]+"', '"+answer[3]+"', '"+answer[4]+"')";
-             c1.s.executeUpdate(query);
-         }
-         catch(Exception e){
-              e.printStackTrace();
-         }
     }
     
     public void startExam(int count){
-//        setQuestion();
-//        q_noL.setText("Q"+(count+1)+". ");
-//        questionL.setText(question[count][0]);
-//        aRB.setText(question[count][1]);
-//        bRB.setText(question[count][2]);
-//        cRB.setText(question[count][3]);
-//        dRB.setText(question[count][4]);
           try{
               Database_conn c1 = new Database_conn();
               String q_no = String.valueOf(count+1);
@@ -396,14 +327,14 @@ public class qWindow extends javax.swing.JFrame {
 
     private void next_subBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_subBActionPerformed
         backB.setVisible(true);
-        checkAnswer();
+        selectedAnswer();
         count++;
         startExam(count);
-        checkAnswer();
+        selectedAnswer();
         showButton();
     }//GEN-LAST:event_next_subBActionPerformed
 // ******* Testing new method for check answer **********
-    public void checkAnswer(){
+    public void selectedAnswer(){
     if(count == 0){
         if(aRB.isSelected()){
             a1 = aRB.getText();
@@ -478,9 +409,7 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
         state =false;
-        //score();
-        //saveScore();
-        test();
+        checkAnswer();
         saveScore();
         new answer().setVisible(true);
         setVisible(false);
@@ -519,79 +448,20 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
     
-    public void score(){
-        try{
-            Database_conn c1 = new Database_conn();
-            String query = "select * from answer"; 
-            ResultSet rs = c1.s.executeQuery(query);
-            while(rs.next()){
-                String ans1 = rs.getString("q_1");
-                String ans2 = rs.getString("q_2");
-                String ans3 = rs.getString("q_3");
-                String ans4 = rs.getString("q_4");
-                String ans5 = rs.getString("q_5");
-                if(a1.equals(ans1)){
-                    correct++;
-                }
-                else{
-                    wrong++;
-                }
-                if(a2.equals(ans2)){
-                    correct++;
-                }
-                else{
-                    wrong++;
-                }
-                if(a3.equals(ans3)){
-                    correct++;
-                }
-                else{
-                    wrong++;
-                }
-                if(a4.equals(ans4)){
-                    correct++;
-                }
-                else{
-                    wrong++;
-                }
-                if(a5.equals(ans5)){
-                    correct++;
-                }
-                else{
-                    wrong++;
-                }
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        // **  testing new for check answer
-        
-        
-        
-        
-        //*****
-    }
-    
-    public void test(){
+    public void checkAnswer(){
         try{
         for(int i=1;i<=5;i++){
-            String a = "";
-            //try{
+                String a = "";
                 String no = String.valueOf(i);
-                //System.out.println(no);
                 Database_conn c1 = new Database_conn();
                 String check = "select * from question where ques_no ='"+no+"'";
                 ResultSet rs = c1.s.executeQuery(check);
                 while(rs.next()){
                     a = rs.getString("answer");
                 }
-               // System.out.println(a);
                 if(i == 1){
                     if(a1.equals(a)){
                         correct++;
-                       // System.out.println("Correct answer");
-                        //break;
                     }
                     else{
                         wrong++;
@@ -600,8 +470,6 @@ public class qWindow extends javax.swing.JFrame {
                 if(i == 2){
                     if(a2.equals(a)){
                         correct++;
-                        //System.out.println("Correct answer");
-                        //break;
                     }
                     else{
                         wrong++;
@@ -610,8 +478,6 @@ public class qWindow extends javax.swing.JFrame {
                 if(i == 3){
                     if(a3.equals(a)){
                         correct++;
-                        //System.out.println("Correct answer");
-                        //break;
                     }
                     else{
                         wrong++;
@@ -620,8 +486,6 @@ public class qWindow extends javax.swing.JFrame {
                 if(i == 4){
                     if(a4.equals(a)){
                         correct++;
-                        //System.out.println("Correct answer");
-                        //break;
                     }
                     else{
                         wrong++;
@@ -630,17 +494,11 @@ public class qWindow extends javax.swing.JFrame {
                 if(i == 5){
                     if(a5.equals(a)){
                         correct++;
-                        //System.out.println("Correct answer");
-                        //break;
                     }
                     else{
                         wrong++;
                     }
                 }
-            //}
-            //catch(Exception e){
-                //e.printStackTrace();
-            //}
         }
     }
         catch(Exception e){
