@@ -10,7 +10,6 @@ import java.sql.*;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ahmed_ishraq
@@ -22,17 +21,17 @@ public class qWindow extends javax.swing.JFrame {
      */
     // *************  For timer ****************
     static int second = 00;
-    static int minute = 0;
+    static int minute = 00;
     static String ddSecond, ddMinute;
     static DecimalFormat dFormat = new DecimalFormat("00");
     static boolean state = true;
     //*******************************************
     static int count = 0;
-    String  a1, a2, a3, a4, a5;
+    String a1, a2, a3, a4, a5;
     String student_id = null;
     int correct = 0;
     int wrong = 0;
-    
+
     public qWindow() {
         initComponents();
         setTitle("Question Window");
@@ -42,25 +41,24 @@ public class qWindow extends javax.swing.JFrame {
         backB.setVisible(false);
         next_subB.setVisible(false);
     }
-    
-    public void startExam(int count){
-          try{
-              Database_conn c1 = new Database_conn();
-              String q_no = String.valueOf(count+1);
-              String fetch = "select * from question where ques_no='"+q_no+"'";
-              ResultSet rs = c1.s.executeQuery(fetch);
-              if(rs.next()){
-                  q_noL.setText(rs.getString("ques_no"));
-                  questionL.setText(rs.getString("question"));
-                  aRB.setText(rs.getString("option_A"));
-                  bRB.setText(rs.getString("option_B"));
-                  cRB.setText(rs.getString("option_C"));
-                  dRB.setText(rs.getString("option_D"));
-              }
-          }
-          catch(Exception e){
-              e.printStackTrace();
-          }
+
+    public void startExam(int count) {
+        try {
+            Database_conn c1 = new Database_conn();
+            String q_no = String.valueOf(count + 1);
+            String fetch = "select * from question where ques_no='" + q_no + "'";
+            ResultSet rs = c1.s.executeQuery(fetch);
+            if (rs.next()) {
+                q_noL.setText(rs.getString("ques_no"));
+                questionL.setText(rs.getString("question"));
+                aRB.setText(rs.getString("option_A"));
+                bRB.setText(rs.getString("option_B"));
+                cRB.setText(rs.getString("option_C"));
+                dRB.setText(rs.getString("option_D"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -109,7 +107,7 @@ public class qWindow extends javax.swing.JFrame {
         colonL.setText(":");
 
         secondL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        secondL.setText("30");
+        secondL.setText("00");
 
         javax.swing.GroupLayout timePLayout = new javax.swing.GroupLayout(timeP);
         timeP.setLayout(timePLayout);
@@ -315,24 +313,21 @@ public class qWindow extends javax.swing.JFrame {
 
     private void startBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBActionPerformed
         student_id = student_idTF.getText();
-        if(student_id.equals("")){
-            JOptionPane.showMessageDialog(null," Write your Student ID to start your exam");
-        }
-        else{
-            try{
+        if (student_id.equals("")) {
+            JOptionPane.showMessageDialog(null, " Write your Student ID to start your exam");
+        } else {
+            try {
                 Database_conn c1 = new Database_conn();
-                String check_id = "select student_id from student_info where student_id ='"+student_id+"'";
+                String check_id = "select student_id from student_info where student_id ='" + student_id + "'";
                 ResultSet rs = c1.s.executeQuery(check_id);
-                if(rs.next()){
+                if (rs.next()) {
                     startExam(0);
                     next_subB.setVisible(true);
                     timer();
+                } else {
+                    JOptionPane.showMessageDialog(null, " Sorry, Can not find your student ID");
                 }
-                else{
-                    JOptionPane.showMessageDialog(null," Sorry, Can not find your student ID");
-                }
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -347,255 +342,237 @@ public class qWindow extends javax.swing.JFrame {
         showButton();
     }//GEN-LAST:event_next_subBActionPerformed
 // ******* Testing new method for check answer **********
-    public void selectedAnswer(){
-    if(count == 0){
-        if(aRB.isSelected()){
-            a1 = aRB.getText();
+
+    public void selectedAnswer() {
+        if (count == 0) {
+            if (aRB.isSelected()) {
+                a1 = aRB.getText();
+            } else if (bRB.isSelected()) {
+                a1 = bRB.getText();
+            } else if (cRB.isSelected()) {
+                a1 = cRB.getText();
+            } else if (dRB.isSelected()) {
+                a1 = dRB.getText();
+            }
         }
-        else if(bRB.isSelected()){
-            a1 = bRB.getText();
+        if (count == 1) {
+            if (aRB.isSelected()) {
+                a2 = aRB.getText();
+            } else if (bRB.isSelected()) {
+                a2 = bRB.getText();
+            } else if (cRB.isSelected()) {
+                a2 = cRB.getText();
+            } else if (dRB.isSelected()) {
+                a2 = dRB.getText();
+            }
         }
-        else if(cRB.isSelected()){
-            a1 = cRB.getText();
+        if (count == 2) {
+            if (aRB.isSelected()) {
+                a3 = aRB.getText();
+            } else if (bRB.isSelected()) {
+                a3 = bRB.getText();
+            } else if (cRB.isSelected()) {
+                a3 = cRB.getText();
+            } else if (dRB.isSelected()) {
+                a3 = dRB.getText();
+            }
         }
-        else if(dRB.isSelected()){
-            a1 = dRB.getText();
-        }
-    }  
-    if(count == 1){
-        if(aRB.isSelected()){
-            a2 = aRB.getText();
-        }
-        else if(bRB.isSelected()){
-            a2 = bRB.getText();
-        }
-        else if(cRB.isSelected()){
-            a2 = cRB.getText();
-        }
-        else if(dRB.isSelected()){
-            a2 = dRB.getText();
-        }
-    }
-    if(count == 2){
-        if(aRB.isSelected()){
-            a3 = aRB.getText();
-        }
-        else if(bRB.isSelected()){
-            a3 = bRB.getText();
-        }
-        else if(cRB.isSelected()){
-            a3 = cRB.getText();
-        }
-        else if(dRB.isSelected()){
-            a3 = dRB.getText();
-        }
-    }
-    if(count == 3){
-        if(aRB.isSelected()){
-            a4 = aRB.getText();
-        }
-        else if(bRB.isSelected()){
-            a4 = bRB.getText();
-        }
-        else if(cRB.isSelected()){
-            a4 = cRB.getText();
-        }
-        else if(dRB.isSelected()){
-            a4 = dRB.getText();
+        if (count == 3) {
+            if (aRB.isSelected()) {
+                a4 = aRB.getText();
+            } else if (bRB.isSelected()) {
+                a4 = bRB.getText();
+            } else if (cRB.isSelected()) {
+                a4 = cRB.getText();
+            } else if (dRB.isSelected()) {
+                a4 = dRB.getText();
+            }
         }
     }
-    }
+
     // *********************************
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
-         if(count == 4){
-        if(aRB.isSelected()){
-            a5 = aRB.getText();
+        if (count == 4) {
+            if (aRB.isSelected()) {
+                a5 = aRB.getText();
+            } else if (bRB.isSelected()) {
+                a5 = bRB.getText();
+            } else if (cRB.isSelected()) {
+                a5 = cRB.getText();
+            } else if (dRB.isSelected()) {
+                a5 = dRB.getText();
+            }
         }
-        else if(bRB.isSelected()){
-            a5 = bRB.getText();
-        }
-        else if(cRB.isSelected()){
-            a5 = cRB.getText();
-        }
-        else if(dRB.isSelected()){
-            a5 = dRB.getText();
-        }
-    }
-        state =false;
+        state = false;
         checkAnswer();
         saveScore();
         new answer().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_submitBActionPerformed
 
-    public void saveScore(){
+    public void saveScore() {
         String c = String.valueOf(correct);
         String w = String.valueOf(wrong);
-        try{
+        try {
             Database_conn c1 = new Database_conn();
-            String query = "insert into score values('"+student_id+"', '"+c+"', '"+w+"')";
+            String query = "insert into score values('" + student_id + "', '" + c + "', '" + w + "')";
             c1.s.executeUpdate(query);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     private void backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBActionPerformed
         count--;
         startExam(count);
         showButton();
     }//GEN-LAST:event_backBActionPerformed
 
-    public void showButton(){
-        if(count == 4){
+    public void showButton() {
+        if (count == 4) {
             submitB.setVisible(true);
             next_subB.setVisible(false);
-        }
-        else{
+        } else {
             submitB.setVisible(false);
             next_subB.setVisible(true);
         }
-        if(count == 0){
+        if (count == 0) {
             backB.setVisible(false);
         }
     }
-    
-    public void checkAnswer(){
-        try{
-        for(int i=1;i<=5;i++){
+
+    public void checkAnswer() {
+        try {
+            for (int i = 1; i <= 5; i++) {
                 String a = "";
                 String no = String.valueOf(i);
                 Database_conn c1 = new Database_conn();
-                String check = "select * from question where ques_no ='"+no+"'";
+                String check = "select * from question where ques_no ='" + no + "'";
                 ResultSet rs = c1.s.executeQuery(check);
-                while(rs.next()){
+                while (rs.next()) {
                     a = rs.getString("answer");
                 }
-                if(i == 1){
-                    if(a1.equals(a)){
+                if (i == 1) {
+                    if (a1.equals(a)) {
                         correct++;
-                    }
-                    else{
+                    } else {
                         wrong++;
                     }
                 }
-                if(i == 2){
-                    if(a2.equals(a)){
+                if (i == 2) {
+                    if (a2.equals(a)) {
                         correct++;
-                    }
-                    else{
+                    } else {
                         wrong++;
                     }
                 }
-                if(i == 3){
-                    if(a3.equals(a)){
+                if (i == 3) {
+                    if (a3.equals(a)) {
                         correct++;
-                    }
-                    else{
+                    } else {
                         wrong++;
                     }
                 }
-                if(i == 4){
-                    if(a4.equals(a)){
+                if (i == 4) {
+                    if (a4.equals(a)) {
                         correct++;
-                    }
-                    else{
+                    } else {
                         wrong++;
                     }
                 }
-                if(i == 5){
-                    if(a5.equals(a)){
+                if (i == 5) {
+                    if (a5.equals(a)) {
                         correct++;
-                    }
-                    else{
+                    } else {
                         wrong++;
                     }
                 }
-        }
-    }
-        catch(Exception e){
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void timer(){
-        String somoy = null;
-       try{
-           Database_conn c1 = new Database_conn();
-           String course_code = "CSE101";
-           String query ="select time from question_info where course_code='"+course_code+"'";
-           ResultSet rs =c1.s.executeQuery(query);
-           if(rs.next()){
-               // formula to get info from database
-               // String something = rs.getString("column name of particular database")
-               somoy = rs.getString("time");
-               minute = Integer.parseInt(somoy);
-           }
-       }
-       catch(Exception e){
-           e.printStackTrace();
-       }
-    state = true;
-        Thread t = new Thread(){
-          public void run(){
-              for(;;){
-                  if(state == true){
-                      try{
-                          sleep(1000);
-                          second--;
-                          ddSecond = dFormat.format(second);
-                          ddMinute = dFormat.format(minute);
-                          minuteL.setText(""+ddMinute);
-                          secondL.setText(""+ddSecond);
-                          if(second == -1){
-                              second = 59;
-                              minute--;
-                              ddSecond = dFormat.format(second);
-                              ddMinute = dFormat.format(minute);
-                              minuteL.setText(""+ddMinute);
-                              secondL.setText(""+ddSecond);
-                          }
-                          if(minute == 0 && second == 0){
-                              state = false;
-                             JOptionPane.showMessageDialog(null,"Times up for your exam");
-                              setVisible(false);
-                          }
-                      }
-                      catch(Exception e){
-                        e.printStackTrace();
-                      }
-                  }
-                  else{
-                      break;
-                  }
-              }
-          }  
+
+    public void timer() {
+        String min = null;
+        String sec = null;
+        try {
+            Database_conn c1 = new Database_conn();
+            String course_code = "CSE101";
+            String query = "select * from question_info where course_code='" + course_code + "'";
+            ResultSet rs = c1.s.executeQuery(query);
+            if (rs.next()) {
+                // formula to get info from database
+                // String something = rs.getString("column name of particular database")
+                min = rs.getString("minute");
+                sec = rs.getString("second");
+                minute = Integer.parseInt(min);
+                second = Integer.parseInt(sec);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        state = true;
+        Thread t = new Thread() {
+            public void run() {
+                for (;;) {
+                    if (state == true) {
+                        try {
+                            sleep(1000);
+                            second--;
+                            ddSecond = dFormat.format(second);
+                            ddMinute = dFormat.format(minute);
+                            minuteL.setText("" + ddMinute);
+                            secondL.setText("" + ddSecond);
+                            if (second == -1) {
+                                second = 59;
+                                minute--;
+                                ddSecond = dFormat.format(second);
+                                ddMinute = dFormat.format(minute);
+                                minuteL.setText("" + ddMinute);
+                                secondL.setText("" + ddSecond);
+                            }
+                            if (minute == 0 && second == 0) {
+                                state = false;
+                                JOptionPane.showMessageDialog(null, "Times up for your exam");
+                                checkAnswer();
+                                saveScore();
+                                new answer().setVisible(true);
+                                setVisible(false);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        break;
+                    }
+                }
+            }
         };
         t.start();
     }
-    
+
     // *********To set the time lable from database ********* 
-    public void time_label(){
-        String somoy = null;
-       try{
-           Database_conn c1 = new Database_conn();
-           String course_code = "CSE101";
-           String query ="select time from question_info where course_code='"+course_code+"'";
-           ResultSet rs =c1.s.executeQuery(query);
-           if(rs.next()){
-               somoy = rs.getString("time");
-               secondL.setText("00");
-               minuteL.setText(somoy);
-               //minute = Integer.parseInt(somoy);
-           }
-       }
-       catch(Exception e){
-           e.printStackTrace();
-       }
+    public void time_label() {
+        String minute = null;
+        String second = null;
+        try {
+            Database_conn c1 = new Database_conn();
+            String course_code = "CSE101";
+            String query = "select * from question_info where course_code='" + course_code + "'";
+            ResultSet rs = c1.s.executeQuery(query);
+            if (rs.next()) {
+                minute = rs.getString("minute");
+                second = rs.getString("second");
+                secondL.setText(second);
+                minuteL.setText(minute);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     // *****************************
-    
+
     /**
      * @param args the command line arguments
      */

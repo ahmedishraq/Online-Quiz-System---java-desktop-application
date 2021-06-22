@@ -16,9 +16,8 @@ public class set_question extends javax.swing.JFrame {
     /**
      * Creates new form set_question
      */
-    
     String question_set = null;
-    
+
     public set_question() {
         initComponents();
         setLocationRelativeTo(null);
@@ -62,6 +61,8 @@ public class set_question extends javax.swing.JFrame {
         answerL = new javax.swing.JLabel();
         answerTF = new javax.swing.JTextField();
         course_codeCB = new javax.swing.JComboBox<>();
+        secTF = new javax.swing.JTextField();
+        secL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,6 +173,11 @@ public class set_question extends javax.swing.JFrame {
         course_codeCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         course_codeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Course Code", "CSE101", "CSE102" }));
 
+        secTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        secL.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        secL.setText("SEC");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -188,14 +194,18 @@ public class set_question extends javax.swing.JFrame {
                                 .addGap(56, 56, 56)
                                 .addComponent(timeL)
                                 .addGap(31, 31, 31)
-                                .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
+                                .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
                                 .addComponent(minL)
-                                .addGap(62, 62, 62)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(secTF, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(secL)
+                                .addGap(29, 29, 29)
                                 .addComponent(setL)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(setCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
+                                .addGap(26, 26, 26)
                                 .addComponent(course_codeL)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(course_codeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -228,7 +238,7 @@ public class set_question extends javax.swing.JFrame {
                         .addComponent(set_questionB)
                         .addGap(183, 183, 183)
                         .addComponent(set_backB)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +253,9 @@ public class set_question extends javax.swing.JFrame {
                     .addComponent(setCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(minL)
                     .addComponent(course_codeL)
-                    .addComponent(course_codeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(course_codeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(secTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(secL))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(questionL)
@@ -324,6 +336,8 @@ public class set_question extends javax.swing.JFrame {
         timeL.setVisible(true);
         timeTF.setVisible(true);
         minL.setVisible(true);
+        secTF.setVisible(true);
+        secL.setVisible(true);
         course_codeL.setVisible(true);
         course_codeCB.setVisible(true);
         setL.setVisible(true);
@@ -380,9 +394,9 @@ public class set_question extends javax.swing.JFrame {
 //                e.printStackTrace();
 //            }
 //        }
-        try{
+        try {
             Database_conn c1 = new Database_conn();
-            String insert = "insert into question values('"+ques_no+"' , '"+question+"' , '"+optionA+"' , '"+optionB+"' , '"+optionC+"' , '"+optionD+"' , '"+answer+"')";
+            String insert = "insert into question values('" + ques_no + "' , '" + question + "' , '" + optionA + "' , '" + optionB + "' , '" + optionC + "' , '" + optionD + "' , '" + answer + "')";
             c1.s.executeUpdate(insert);
             ques_noTF.setText("");
             questionTF.setText("");
@@ -391,76 +405,70 @@ public class set_question extends javax.swing.JFrame {
             OptionCTF.setText("");
             OptionDTF.setText("");
             answerTF.setText("");
-         }
-         catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-         }
+        }
     }//GEN-LAST:event_submitBActionPerformed
 
     private void set_questionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_questionBActionPerformed
-//        String time = timeTF.getText();
-//        String course_code = course_codeTF.getText();
-//        question_set = (String) setCB.getSelectedItem();
-//        try{
-//            //Database
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
-        
-        set_questionB.setVisible(false);
-        timeL.setVisible(false);
-        timeTF.setVisible(false);
-        minL.setVisible(false);
-        course_codeL.setVisible(false);
-        course_codeCB.setVisible(false);
-        setL.setVisible(false);
-        setCB.setVisible(false);
-        set_backB.setVisible(false);
-        // ******* show other sections *********
-        ques_noL.setVisible(true);
-        ques_noTF.setVisible(true);
-        questionL.setVisible(true);
-        questionTF.setVisible(true);
-        optionAL.setVisible(true);
-        OptionATF.setVisible(true);
-        optionBL.setVisible(true);
-        OptionBTF.setVisible(true);
-        optionCL.setVisible(true);
-        OptionCTF.setVisible(true);
-        optionDL.setVisible(true);
-        OptionDTF.setVisible(true);
-        answerL.setVisible(true);
-        answerTF.setVisible(true);
-        submitB.setVisible(true);
-        finishB.setVisible(true);
-        backB.setVisible(true);
-        //**************************
-        
-        try{
-            String time = timeTF.getText();
-            String set = (String) setCB.getSelectedItem();
-            String course_code = (String) course_codeCB.getSelectedItem(); 
-            
-            Database_conn c1 = new Database_conn();
-            String insert = "insert into question_info values('"+course_code+"' , '"+set+"' , '"+time+"')";
-            c1.s.executeUpdate(insert);
-        }
-        catch(Exception e){
-            e.printStackTrace();
+        String minute = timeTF.getText();
+        String second = secTF.getText();
+        String set = (String) setCB.getSelectedItem();
+        String course_code = (String) course_codeCB.getSelectedItem();
+        if (minute.equals("") || second.equals("") || set.equals("SET") || course_code.equals("Course Code")) {
+            JOptionPane.showMessageDialog(null, "Please fill up all the info about the question");
+        } else {
+            set_questionB.setVisible(false);
+            timeL.setVisible(false);
+            timeTF.setVisible(false);
+            minL.setVisible(false);
+            secTF.setVisible(false);
+            secL.setVisible(false);
+            course_codeL.setVisible(false);
+            course_codeCB.setVisible(false);
+            setL.setVisible(false);
+            setCB.setVisible(false);
+            set_backB.setVisible(false);
+            // ******* show other sections *********
+            ques_noL.setVisible(true);
+            ques_noTF.setVisible(true);
+            questionL.setVisible(true);
+            questionTF.setVisible(true);
+            optionAL.setVisible(true);
+            OptionATF.setVisible(true);
+            optionBL.setVisible(true);
+            OptionBTF.setVisible(true);
+            optionCL.setVisible(true);
+            OptionCTF.setVisible(true);
+            optionDL.setVisible(true);
+            OptionDTF.setVisible(true);
+            answerL.setVisible(true);
+            answerTF.setVisible(true);
+            submitB.setVisible(true);
+            finishB.setVisible(true);
+            backB.setVisible(true);
+            //**************************
+
+            try {
+                Database_conn c1 = new Database_conn();
+                String insert = "insert into question_info values('" + course_code + "' , '" + set + "' , '" + minute + "' , '"+second+"')";
+                c1.s.executeUpdate(insert);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_set_questionBActionPerformed
 
     private void set_backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_backBActionPerformed
         new Admin().setVisible(true);
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_set_backBActionPerformed
 
     private void finishBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBActionPerformed
         this.dispose();
         new Admin().setVisible(true);
     }//GEN-LAST:event_finishBActionPerformed
-        public void hide(){
+    public void hide() {
         ques_noL.setVisible(false);
         ques_noTF.setVisible(false);
         questionL.setVisible(false);
@@ -480,7 +488,7 @@ public class set_question extends javax.swing.JFrame {
         finishB.setVisible(false);
         backB.setVisible(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -537,6 +545,8 @@ public class set_question extends javax.swing.JFrame {
     private javax.swing.JTextField ques_noTF;
     private javax.swing.JLabel questionL;
     private javax.swing.JTextField questionTF;
+    private javax.swing.JLabel secL;
+    private javax.swing.JTextField secTF;
     private javax.swing.JComboBox<String> setCB;
     private javax.swing.JLabel setL;
     private javax.swing.JButton set_backB;
