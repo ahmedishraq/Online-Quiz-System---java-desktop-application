@@ -40,6 +40,10 @@ public class qWindow extends javax.swing.JFrame {
         submitB.setVisible(false);
         backB.setVisible(false);
         next_subB.setVisible(false);
+        aRB.setVisible(false);
+        bRB.setVisible(false);
+        cRB.setVisible(false);
+        dRB.setVisible(false);
     }
 
     public void startExam(int count) {
@@ -49,7 +53,7 @@ public class qWindow extends javax.swing.JFrame {
             String fetch = "select * from question where ques_no='" + q_no + "'";
             ResultSet rs = c1.s.executeQuery(fetch);
             if (rs.next()) {
-                q_noL.setText(rs.getString("ques_no"));
+                q_noL.setText(rs.getString("ques_no")+".");
                 questionL.setText(rs.getString("question"));
                 aRB.setText(rs.getString("option_A"));
                 bRB.setText(rs.getString("option_B"));
@@ -201,10 +205,13 @@ public class qWindow extends javax.swing.JFrame {
         );
 
         buttonGroup1.add(aRB);
+        aRB.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         buttonGroup1.add(cRB);
+        cRB.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         buttonGroup1.add(bRB);
+        bRB.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         backB.setText("Back");
         backB.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +228,7 @@ public class qWindow extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(dRB);
+        dRB.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         submitB.setText("Submit");
         submitB.addActionListener(new java.awt.event.ActionListener() {
@@ -229,9 +237,9 @@ public class qWindow extends javax.swing.JFrame {
             }
         });
 
-        q_noL.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        q_noL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        questionL.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        questionL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout QuestionPLayout = new javax.swing.GroupLayout(QuestionP);
         QuestionP.setLayout(QuestionPLayout);
@@ -321,6 +329,10 @@ public class qWindow extends javax.swing.JFrame {
                 String check_id = "select student_id from student_info where student_id ='" + student_id + "'";
                 ResultSet rs = c1.s.executeQuery(check_id);
                 if (rs.next()) {
+                    aRB.setVisible(true);
+                    bRB.setVisible(true);
+                    cRB.setVisible(true);
+                    dRB.setVisible(true);
                     startExam(0);
                     next_subB.setVisible(true);
                     timer();

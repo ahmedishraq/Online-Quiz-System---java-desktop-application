@@ -17,6 +17,7 @@ public class set_question extends javax.swing.JFrame {
      * Creates new form set_question
      */
     String question_set = null;
+    String course_code = null;
 
     public set_question() {
         initComponents();
@@ -354,49 +355,11 @@ public class set_question extends javax.swing.JFrame {
         String optionC = OptionCTF.getText();
         String optionD = OptionDTF.getText();
         String answer = answerTF.getText();
-//        if(question_set.equals("A")){
-//            try{
-//                Database_conn c1 = new Database_conn();
-//                String insert = "insert into set_A values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-//                c1.s.executeUpdate(insert);
-//            }
-//            catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//        if(question_set.equals("B")){
-//            try{
-//                Database_conn c1 = new Database_conn();
-//                String insert = "insert into set_B values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-//                c1.s.executeUpdate(insert);
-//            }
-//            catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//        if(question_set.equals("C")){
-//            try{
-//                Database_conn c1 = new Database_conn();
-//                String insert = "insert into set_C values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-//                c1.s.executeUpdate(insert);
-//            }
-//            catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//        if(question_set.equals("D")){
-//            try{
-//                Database_conn c1 = new Database_conn();
-//                String insert = "insert into set_D values('"+ques_no+"' ,'"+question+"' , '"+optionA+"' , '"+optionB+"' ,'"+optionC+"' , '"+optionD+"')";
-//                c1.s.executeUpdate(insert);
-//            }
-//            catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
+        course_code = (String)course_codeCB.getSelectedItem();
+        if(course_code.equals("CSE101")){
         try {
             Database_conn c1 = new Database_conn();
-            String insert = "insert into question values('" + ques_no + "' , '" + question + "' , '" + optionA + "' , '" + optionB + "' , '" + optionC + "' , '" + optionD + "' , '" + answer + "')";
+            String insert = "insert into cse101_question values('" + ques_no + "' , '" + question + "' , '" + optionA + "' , '" + optionB + "' , '" + optionC + "' , '" + optionD + "' , '" + answer + "')";
             c1.s.executeUpdate(insert);
             ques_noTF.setText("");
             questionTF.setText("");
@@ -407,6 +370,23 @@ public class set_question extends javax.swing.JFrame {
             answerTF.setText("");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        }
+        else if(course_code.equals("CSE102")){
+            try {
+            Database_conn c1 = new Database_conn();
+            String insert = "insert into cse102_question values('" + ques_no + "' , '" + question + "' , '" + optionA + "' , '" + optionB + "' , '" + optionC + "' , '" + optionD + "' , '" + answer + "')";
+            c1.s.executeUpdate(insert);
+            ques_noTF.setText("");
+            questionTF.setText("");
+            OptionATF.setText("");
+            OptionBTF.setText("");
+            OptionCTF.setText("");
+            OptionDTF.setText("");
+            answerTF.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         }
     }//GEN-LAST:event_submitBActionPerformed
 
