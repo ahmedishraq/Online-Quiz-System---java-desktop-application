@@ -31,6 +31,8 @@ public class qWindow extends javax.swing.JFrame {
     String student_id = null;
     int correct = 0;
     int wrong = 0;
+    
+    String course = null;
 
     public qWindow() {
         initComponents();
@@ -47,10 +49,12 @@ public class qWindow extends javax.swing.JFrame {
     }
 
     public void startExam(int count) {
+        course = (String) courseCB.getSelectedItem();
+        if(course.equals("CSE101")){
         try {
             Database_conn c1 = new Database_conn();
             String q_no = String.valueOf(count + 1);
-            String fetch = "select * from question where ques_no='" + q_no + "'";
+            String fetch = "select * from cse101_question where ques_no='" + q_no + "'";
             ResultSet rs = c1.s.executeQuery(fetch);
             if (rs.next()) {
                 q_noL.setText(rs.getString("ques_no")+".");
@@ -62,6 +66,25 @@ public class qWindow extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        }
+        else if(course.equals("CSE102")){
+            try {
+            Database_conn c1 = new Database_conn();
+            String q_no = String.valueOf(count + 1);
+            String fetch = "select * from cse102_question where ques_no='" + q_no + "'";
+            ResultSet rs = c1.s.executeQuery(fetch);
+            if (rs.next()) {
+                q_noL.setText(rs.getString("ques_no")+".");
+                questionL.setText(rs.getString("question"));
+                aRB.setText(rs.getString("option_A"));
+                bRB.setText(rs.getString("option_B"));
+                cRB.setText(rs.getString("option_C"));
+                dRB.setText(rs.getString("option_D"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         }
     }
 
@@ -85,6 +108,9 @@ public class qWindow extends javax.swing.JFrame {
         student_idL = new javax.swing.JLabel();
         student_idTF = new javax.swing.JTextField();
         startB = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        courseL = new javax.swing.JLabel();
+        courseCB = new javax.swing.JComboBox<>();
         QuestionP = new javax.swing.JPanel();
         aRB = new javax.swing.JRadioButton();
         cRB = new javax.swing.JRadioButton();
@@ -126,7 +152,7 @@ public class qWindow extends javax.swing.JFrame {
                 .addComponent(colonL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(secondL)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         timePLayout.setVerticalGroup(
             timePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,15 +209,45 @@ public class qWindow extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
         );
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        courseL.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        courseL.setText("Course:");
+
+        courseCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        courseCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Course", "CSE101", "CSE102" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(courseL)
+                .addGap(61, 61, 61)
+                .addComponent(courseCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courseL)
+                    .addComponent(courseCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout time_idPLayout = new javax.swing.GroupLayout(time_idP);
         time_idP.setLayout(time_idPLayout);
         time_idPLayout.setHorizontalGroup(
             time_idPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, time_idPLayout.createSequentialGroup()
+            .addGroup(time_idPLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(time_idPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(timeP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(time_idPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(timeP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         time_idPLayout.setVerticalGroup(
@@ -199,7 +255,9 @@ public class qWindow extends javax.swing.JFrame {
             .addGroup(time_idPLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(timeP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(32, 32, 32)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(idP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -321,8 +379,9 @@ public class qWindow extends javax.swing.JFrame {
 
     private void startBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBActionPerformed
         student_id = student_idTF.getText();
-        if (student_id.equals("")) {
-            JOptionPane.showMessageDialog(null, " Write your Student ID to start your exam");
+        course = (String) courseCB.getSelectedItem();
+        if (student_id.equals("") || course.equals("Select Course")) {
+            JOptionPane.showMessageDialog(null, " Write your Student ID & Select the course code to start your exam");
         } else {
             try {
                 Database_conn c1 = new Database_conn();
@@ -350,11 +409,13 @@ public class qWindow extends javax.swing.JFrame {
         selectedAnswer();
         count++;
         startExam(count);
+        // clear the selected buttons for the next question  
+        buttonGroup1.clearSelection();
         selectedAnswer();
         showButton();
     }//GEN-LAST:event_next_subBActionPerformed
-// ******* Testing new method for check answer **********
 
+    
     public void selectedAnswer() {
         if (count == 0) {
             if (aRB.isSelected()) {
@@ -402,7 +463,6 @@ public class qWindow extends javax.swing.JFrame {
         }
     }
 
-    // *********************************
     private void submitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBActionPerformed
         if (count == 4) {
             if (aRB.isSelected()) {
@@ -628,8 +688,11 @@ public class qWindow extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton cRB;
     private javax.swing.JLabel colonL;
+    private javax.swing.JComboBox<String> courseCB;
+    private javax.swing.JLabel courseL;
     private javax.swing.JRadioButton dRB;
     private javax.swing.JPanel idP;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel minuteL;
     private javax.swing.JButton next_subB;
     private javax.swing.JLabel q_noL;

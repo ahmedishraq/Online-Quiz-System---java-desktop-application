@@ -1,0 +1,34 @@
+[33mc23c44a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Database update in setquestion class
+[33m2688f27[m update time section in setquestion and qwindow class
+[33mcbf37d8[m Database update for ID
+[33m1b5577d[m Database update in answer class
+[33m3e93942[m Database cleaning in qwindow
+[33me026d6c[m Major bug fix in qwindow class
+[33m6cf66aa[m fixing bug in qwindow
+[33md62a635[m fixing check answer in qwindow class
+[33m064f3d4[m design update in entry class
+[33m27178a5[m database update for qwindow class
+[33m9653364[m Update timer for classes added database for timer
+[33m851796e[m Update set question class
+[33ma64bb79[m minor update
+[33mfc8c1a8[m database and gui update in set question class
+[33m8dba87f[m update in set question class
+[33medbe2a6[m minor update in set question class
+[33m1ca7a91[m bug fix in set question class
+[33me419264[m update in question set class
+[33m8d79b41[m Added question set frame
+[33m9935962[m Title added for every frame
+[33ma88ad63[m Database flow in Admin class
+[33mc9f10e0[m Database flow in admin_signup class
+[33m6bf1191[m minor update in Login class
+[33mbf8c86a[m Added Admin Signup frame
+[33mda0d036[m minor update in Admin panel
+[33m031ffae[m Addend Admin Panel
+[33mdac1efc[m Added Entry frame
+[33m022e4d9[m minor update in question class
+[33m5f18e8e[m Update README.md
+[33m9ae2351[m frame switching update in login class
+[33mfe29117[m Delete README.md
+[33m7152dd8[m Update README.MD
+[33mb1fb2c7[m update qwindow switching class
+[33m448fb76[m Intial commit
