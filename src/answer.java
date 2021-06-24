@@ -7,7 +7,6 @@ import java.sql.*;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ahmed_ishraq
@@ -17,23 +16,24 @@ public class answer extends javax.swing.JFrame {
     /**
      * Creates new form answer
      */
-    
     String correct = null;
     String wrong = null;
     int c = 0;
     int w = 0;
-    
+    String std_id = null;
+    String course_code = null;
+
     public answer() {
         initComponents();
         setTitle("Answer Window");
         setLocationRelativeTo(null);
-        showAnswer();
+        //showAnswer();
         c_ansPB.setVisible(false);
         w_ansPB.setVisible(false);
         c_ansL.setVisible(false);
         w_ansL.setVisible(false);
         finishB.setVisible(false);
-        
+
     }
 
     /**
@@ -73,6 +73,7 @@ public class answer extends javax.swing.JFrame {
         w_ansPB = new javax.swing.JProgressBar();
         scoreB = new javax.swing.JButton();
         finishB = new javax.swing.JButton();
+        coreectL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,6 +280,10 @@ public class answer extends javax.swing.JFrame {
             }
         });
 
+        coreectL.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        coreectL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        coreectL.setText("Correct Answers");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -290,16 +295,22 @@ public class answer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(21, Short.MAX_VALUE))
+                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(finishB)
                         .addGap(196, 196, 196))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(coreectL, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addComponent(coreectL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ansP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
@@ -315,20 +326,20 @@ public class answer extends javax.swing.JFrame {
 
     private void scoreBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreBActionPerformed
         scoreB.setVisible(false);
-        String std_id = JOptionPane.showInputDialog("Enter your student ID");
-        try{
+        std_id = JOptionPane.showInputDialog("Enter your student ID");
+        showAnswer();
+        try {
             Database_conn c1 = new Database_conn();
-            String query = "select * from score where student_id = '"+std_id+"'";
+            String query = "select * from score where student_id = '" + std_id + "'";
             ResultSet rs = c1.s.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 correct = rs.getString("correct");
                 wrong = rs.getString("wrong");
             }
-             c = Integer.parseInt(correct)*20;
-             w = Integer.parseInt(wrong)*20;
-            
-        }
-        catch(Exception e){
+            c = Integer.parseInt(correct) * 20;
+            w = Integer.parseInt(wrong) * 20;
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         c_ansL.setVisible(true);
@@ -345,50 +356,91 @@ public class answer extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_finishBActionPerformed
 
-    public void showScore(){
-        
+    public void showScore() {
+
     }
-    
-    public void showAnswer(){
-        try{
-            for(int i=1;i<=5;i++){
-                String question = null;
-                String answer = null;
-                String q_no = String.valueOf(i);
-                Database_conn c1 = new Database_conn();
-                String retrive = "select * from question where ques_no='"+q_no+"'";
-                ResultSet rs = c1.s.executeQuery(retrive);
-                while(rs.next()){
-                     question = rs.getString("question");
-                     answer = rs.getString("answer");
+
+    public void showAnswer() {
+        try {
+            Database_conn c1 = new Database_conn();
+            String search_course = "select * from score where student_id = '" + std_id + "'";
+            ResultSet rss = c1.s.executeQuery(search_course);
+            if (rss.next()) {
+                course_code = rss.getString("course_code");
+            }
+            if (course_code.equals("CSE101")) {
+                for (int i = 1; i <= 5; i++) {
+                    String question = null;
+                    String answer = null;
+                    String q_no = String.valueOf(i);
+                    //Database_conn c1 = new Database_conn();
+                    String retrive = "select * from cse101_question where ques_no='" + q_no + "'";
+                    ResultSet rs = c1.s.executeQuery(retrive);
+                    while (rs.next()) {
+                        question = rs.getString("question");
+                        answer = rs.getString("answer");
+                    }
+                    if (i == 1) {
+                        q1L.setText(question);
+                        ans1L.setText(answer);
+                    }
+                    if (i == 2) {
+                        q2L.setText(question);
+                        ans2L.setText(answer);
+                    }
+                    if (i == 3) {
+                        q3L.setText(question);
+                        ans3L.setText(answer);
+                    }
+                    if (i == 4) {
+                        q4L.setText(question);
+                        ans4L.setText(answer);
+                    }
+                    if (i == 5) {
+                        q5L.setText(question);
+                        ans5L.setText(answer);
+                    }
                 }
-                if(i == 1){
-                    q1L.setText(question);
-                    ans1L.setText(answer);
+            }
+            else if(course_code.equals("CSE102")){
+                 for (int i = 1; i <= 5; i++) {
+                    String question = null;
+                    String answer = null;
+                    String q_no = String.valueOf(i);
+                    //Database_conn c1 = new Database_conn();
+                    String retrive = "select * from cse102_question where ques_no='" + q_no + "'";
+                    ResultSet rs = c1.s.executeQuery(retrive);
+                    while (rs.next()) {
+                        question = rs.getString("question");
+                        answer = rs.getString("answer");
+                    }
+                    if (i == 1) {
+                        q1L.setText(question);
+                        ans1L.setText(answer);
+                    }
+                    if (i == 2) {
+                        q2L.setText(question);
+                        ans2L.setText(answer);
+                    }
+                    if (i == 3) {
+                        q3L.setText(question);
+                        ans3L.setText(answer);
+                    }
+                    if (i == 4) {
+                        q4L.setText(question);
+                        ans4L.setText(answer);
+                    }
+                    if (i == 5) {
+                        q5L.setText(question);
+                        ans5L.setText(answer);
+                    }
                 }
-                if(i == 2){
-                    q2L.setText(question);
-                    ans2L.setText(answer);
-                }
-                if(i == 3){
-                    q3L.setText(question);
-                    ans3L.setText(answer);
-                }
-                if(i == 4){
-                    q4L.setText(question);
-                    ans4L.setText(answer);
-                }
-                if(i == 5){
-                    q5L.setText(question);
-                    ans5L.setText(answer);
-                }
-             }
-        }
-        catch(Exception e){
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -433,6 +485,7 @@ public class answer extends javax.swing.JFrame {
     private javax.swing.JPanel ansP;
     private javax.swing.JLabel c_ansL;
     private javax.swing.JProgressBar c_ansPB;
+    private javax.swing.JLabel coreectL;
     private javax.swing.JButton finishB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

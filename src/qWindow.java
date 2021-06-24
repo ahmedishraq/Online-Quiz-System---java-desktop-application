@@ -382,12 +382,12 @@ public class qWindow extends javax.swing.JFrame {
         course = (String) courseCB.getSelectedItem();
         if (student_id.equals("") || course.equals("Select Course")) {
             JOptionPane.showMessageDialog(null, " Write your Student ID & Select the course code to start your exam");
-        } else {
-            try {
-                Database_conn c1 = new Database_conn();
-                String check_id = "select student_id from student_info where student_id ='" + student_id + "'";
-                ResultSet rs = c1.s.executeQuery(check_id);
-                if (rs.next()) {
+        } //else {
+//            try {
+//                Database_conn c1 = new Database_conn();
+//                String check_id = "select student_id from student_info where student_id ='" + student_id + "'";
+//                ResultSet rs = c1.s.executeQuery(check_id);
+//                if (rs.next()) {
                     aRB.setVisible(true);
                     bRB.setVisible(true);
                     cRB.setVisible(true);
@@ -395,13 +395,13 @@ public class qWindow extends javax.swing.JFrame {
                     startExam(0);
                     next_subB.setVisible(true);
                     timer();
-                } else {
-                    JOptionPane.showMessageDialog(null, " Sorry, Can not find your student ID");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//                } else {
+//                    JOptionPane.showMessageDialog(null, " Sorry, Can not find your student ID");
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+   //     }
     }//GEN-LAST:event_startBActionPerformed
 
     private void next_subBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_subBActionPerformed
@@ -485,9 +485,10 @@ public class qWindow extends javax.swing.JFrame {
     public void saveScore() {
         String c = String.valueOf(correct);
         String w = String.valueOf(wrong);
+        course = (String) courseCB.getSelectedItem();
         try {
             Database_conn c1 = new Database_conn();
-            String query = "insert into score values('" + student_id + "', '" + c + "', '" + w + "')";
+            String query = "insert into score values('" + student_id + "', '"+course+"' , '" + c + "', '" + w + "')";
             c1.s.executeUpdate(query);
         } catch (Exception e) {
             e.printStackTrace();
