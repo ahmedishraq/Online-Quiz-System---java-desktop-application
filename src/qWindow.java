@@ -382,12 +382,12 @@ public class qWindow extends javax.swing.JFrame {
         course = (String) courseCB.getSelectedItem();
         if (student_id.equals("") || course.equals("Select Course")) {
             JOptionPane.showMessageDialog(null, " Write your Student ID & Select the course code to start your exam");
-        } //else {
-//            try {
-//                Database_conn c1 = new Database_conn();
-//                String check_id = "select student_id from student_info where student_id ='" + student_id + "'";
-//                ResultSet rs = c1.s.executeQuery(check_id);
-//                if (rs.next()) {
+        } else {
+            try {
+                Database_conn c1 = new Database_conn();
+                String check_id = "select student_id from student_info where student_id ='" + student_id + "'";
+                ResultSet rs = c1.s.executeQuery(check_id);
+                if (rs.next()) {
                     aRB.setVisible(true);
                     bRB.setVisible(true);
                     cRB.setVisible(true);
@@ -395,13 +395,13 @@ public class qWindow extends javax.swing.JFrame {
                     startExam(0);
                     next_subB.setVisible(true);
                     timer();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, " Sorry, Can not find your student ID");
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-   //     }
+                } else {
+                    JOptionPane.showMessageDialog(null, " Sorry, Can not find your student ID");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_startBActionPerformed
 
     private void next_subBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_subBActionPerformed
@@ -516,11 +516,13 @@ public class qWindow extends javax.swing.JFrame {
 
     public void checkAnswer() {
         try {
+            Database_conn c1 = new Database_conn();
+            course = (String) courseCB.getSelectedItem();
+            if(course.equals("CSE101")){
             for (int i = 1; i <= 5; i++) {
                 String a = "";
                 String no = String.valueOf(i);
-                Database_conn c1 = new Database_conn();
-                String check = "select * from question where ques_no ='" + no + "'";
+                String check = "select * from cse101_question where ques_no ='" + no + "'";
                 ResultSet rs = c1.s.executeQuery(check);
                 while (rs.next()) {
                     a = rs.getString("answer");
@@ -560,6 +562,53 @@ public class qWindow extends javax.swing.JFrame {
                         wrong++;
                     }
                 }
+            }
+            }
+            else if(course.equals("CSE102")){
+                for (int i = 1; i <= 5; i++) {
+                String a = "";
+                String no = String.valueOf(i);
+                String check = "select * from cse102_question where ques_no ='" + no + "'";
+                ResultSet rs = c1.s.executeQuery(check);
+                while (rs.next()) {
+                    a = rs.getString("answer");
+                }
+                if (i == 1) {
+                    if (a1.equals(a)) {
+                        correct++;
+                    } else {
+                        wrong++;
+                    }
+                }
+                if (i == 2) {
+                    if (a2.equals(a)) {
+                        correct++;
+                    } else {
+                        wrong++;
+                    }
+                }
+                if (i == 3) {
+                    if (a3.equals(a)) {
+                        correct++;
+                    } else {
+                        wrong++;
+                    }
+                }
+                if (i == 4) {
+                    if (a4.equals(a)) {
+                        correct++;
+                    } else {
+                        wrong++;
+                    }
+                }
+                if (i == 5) {
+                    if (a5.equals(a)) {
+                        correct++;
+                    } else {
+                        wrong++;
+                    }
+                }
+            }
             }
         } catch (Exception e) {
             e.printStackTrace();
